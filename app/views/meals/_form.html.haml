@@ -1,0 +1,26 @@
+= form_with(model: meal, local: true) do |form|
+  - if meal.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(meal.errors.count, "error")
+        prohibited this meal from being saved:
+      %ul
+        - meal.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :protein
+    = form.number_field :protein, step: '0.01'
+  .field
+    = form.label :fat
+    = form.number_field :fat, step: '0.01'
+  .field
+    = form.label :carb
+    = form.number_field :carb, step: '0.01'
+  .field
+    = form.label :cal
+    = form.number_field :cal, step: '0.01'
+  .actions
+    = form.submit

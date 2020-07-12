@@ -5,17 +5,20 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname  |string|null: false|
+|bodyweight|integer|null: false|
+|height    |float|null: false|
+|bmi       |float|null: false|
 |email     |string|null: false, unique: true|
 |password  |string|null: false|
 
 ### Association
 - has_many :favorites, dependent: :destroy
 - has_many  :meals, dependent: :destroy
-- has_many  :performances,  through:  :meals
+<!-- - has_many  :performances,  through:  :meals -->
 - has_many  :workouts, dependent: :destroy
-- has_many  :performances,  through:  :workouts
+<!-- - has_many  :performances,  through:  :workouts -->
 - has_many :comments, dependent: :destroy
-- has_many  :performances,  through:  :comments
+<!-- - has_many  :performances,  through:  :comments -->
 
 
 ## mealsテーブル
@@ -23,10 +26,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |name         |string |null: false, index: true|
-|protein      |integer|null: false|
-|fat          |integer|null: false|
-|carb         |integer|null: false, enum|
-|cal          |integer|foreign_key: true|
+|protein      |float  |null: false|
+|fat          |float  |null: false|
+|carb         |float  |null: false|
+|cal          |float  |null: false|
 |user_id      |integer|null: false, foreign_key: true|
 
 ### Association
@@ -40,11 +43,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name         |string |null: false, index: true|
+|menu         |string |null: false, index: true|
 |weight       |integer|null: false|
 |set          |integer|null: false|
-|bodypart     |string |null: false, enum|
-|cal          |integer|foreign_key: true|
+|bodypart     |string |null: false|
+|cal          |integer||
 |user_id      |integer|null: false, foreign_key: true|
 
 ### Association

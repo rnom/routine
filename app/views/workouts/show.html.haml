@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Menu:
+  = @workout.menu
+%p
+  %b Weight:
+  = @workout.weight
+%p
+  %b Set:
+  = @workout.set
+%p
+  %b Bodypart:
+  = @workout.bodypart
+%p
+  %b Cal:
+  = @workout.cal
+
+= link_to 'Edit', edit_workout_path(@workout)
+\|
+= link_to 'Back', workouts_path

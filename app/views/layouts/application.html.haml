@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Routine
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.header
+      .header__bar.row
+        %h1.grid-6
+          %a{:href => "/"} Routine
+        - if user_signed_in?
+          .user_nav.grid-6
+            = link_to "Log-out", destroy_user_session_path, method: :delete
+            = link_to 'Edit Account', edit_user_registration_path(current_user)
+            = link_to 'New Meal', new_meal_path
+            = link_to 'New Workout', new_workout_path
+            = link_to 'Workouts', workouts_path
+        - else
+          .grid-6
+            = link_to "Log-in", new_user_session_path, class: 'post'
+            = link_to "Sign-up", new_user_registration_path, class: 'post'
+    = yield
