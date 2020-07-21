@@ -73,3 +73,6 @@ gem 'erb2haml'
 gem 'font-awesome-sass'
 gem 'pry-rails'
 gem 'jquery-rails'
+gem "chartkick"
+gem 'chartable'
+gem 'jquery-turbolinks'

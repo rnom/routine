@@ -1,4 +1,5 @@
-= form_with(model: meal, local: true) do |form|
+-# = form_with(model: meal, local: true) do |form|
+= form_with(model: meal, remote: true) do |form|
   - if meal.errors.any?
     #error_explanation
       %h2

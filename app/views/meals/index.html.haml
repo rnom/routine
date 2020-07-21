@@ -1,5 +1,6 @@
 %p#notice= notice
-%h1 Meals
+%h1= @day
+= pie_chart @chart, suffix: "", title: "Today's PFC Balance", colors: ["#008000", "#F00", "#000080"]
 %table
   %thead
     %tr
@@ -20,6 +21,13 @@
         %td= link_to 'Show', meal
         %td= link_to 'Edit', edit_meal_path(meal)
         %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
+    %tr
+      %th Total
+      %th= @sum_protein
+      %th= @sum_fat
+      %th= @sum_carb
+      %th= @sum_cal
 %br/
+= render 'form', meal: @meal
 
 

@@ -4,7 +4,16 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = Meal.all
+    # @meals = Meal.all.group_by{|m| m.created_at.strftime('%Y%m%d') }
+    # @meals = Meal.group("date(created_at)")
+    @meals = Meal.where('created_at > ?', 9.hour.ago)
+    @sum_protein = @meals.sum(:protein).round(1)
+    @sum_fat = @meals.sum(:fat).round(1)
+    @sum_carb = @meals.sum(:carb).round(1)
+    @sum_cal = @meals.sum(:cal).round(1)
+    @day = Date.today
+    @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
+    @meal = Meal.new
   end
 
   # GET /meals/1
@@ -15,7 +24,12 @@ class MealsController < ApplicationController
   # GET /meals/new
   def new
     @meal = Meal.new
-    # @meal.images.new
+    @meal_data = Meal.find_by('name LIKE(?)', "%#{params[:name]}%")
+    # binding.pry
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /meals/1/edit
