@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @meal.name
+%p
+  %strong Protein:
+  = @meal.protein
+%p
+  %strong Fat:
+  = @meal.fat
+%p
+  %strong Carb:
+  = @meal.carb
+%p
+  %strong Cal:
+  = @meal.cal
+= link_to 'Edit', edit_meal_path(@meal)
+|
+= link_to 'Back', meals_path

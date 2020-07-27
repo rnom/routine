@@ -1,0 +1,8 @@
+@import "modules/user";
+@import "simple_calendar";
+
+/*
+ *= require simple_calendar #ここに追記します
+ *= require_tree .
+ *= require_self
+ */
