@@ -31,8 +31,8 @@
 %br/
 = render 'form', meal: @meal
 
-= link_to 'previous day＞', "/meals/previous"
-= link_to '＜next day', "/meals/next"
+= link_to 'previous day＞', previous_meals_path(@n_day)
+= link_to '＜next day', next_meals_path(@n_day)
 
 -# - @meals_day.each do |hash_elements|
 -#   = hash_elements

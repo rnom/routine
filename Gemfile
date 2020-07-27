@@ -76,3 +76,5 @@ gem 'jquery-rails'
 gem "chartkick"
 gem 'chartable'
 gem 'jquery-turbolinks'
+gem 'groupdate'
+gem "simple_calendar", "~> 2.0"
