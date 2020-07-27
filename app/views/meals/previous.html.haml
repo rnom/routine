@@ -31,18 +31,8 @@
 %br/
 = render 'form', meal: @meal
 
-= link_to 'previous day＞', "/meals/previous"
-= link_to '＜next day', "/meals/next"
-
--# - @meals_day.each do |hash_elements|
--#   = hash_elements
--#   %br/
-
--#   -# %h3=Date::DAYNAMES[hash_elements.first]
--#   -# - hash_elements.last.each do |m|
--#   -#   = m.name
--#   -#   = m. created_at
--#   -#   %br/
+= link_to '< previous day', "/meals/previous"
+= link_to 'next day >', "/meals/next"
 
 = month_calendar events: @allmeals do |date, meals|
   = link_to date.day, meals_path(@allmeals2)
@@ -51,9 +41,8 @@
   - meals.each do |meal|
     = link_to meal.name, meal_path(meal)
     = meal.protein
-    -# - array << meal.protein
-    -# = array.sum
-    -# %br/
+    = meal.fat
+    = meal.carb
 
 
 
