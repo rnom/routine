@@ -4,14 +4,35 @@
 %table
   %thead
     %tr
-      %th Name
-      %th Protein
-      %th Fat
-      %th Carb
-      %th Cal
-      %th{:colspan => "3"}
+      %td Name
+      %td Protein
+      %td Fat
+      %td Carb
+      %td Cal
+      %td{:colspan => "3"}
   %tbody
-    -# - @grouped_meals[true].each do |meal|
+    = form_with model: @meal, url: {controller: 'meals', action: 'index' }, local: true do |form|
+      - if @meal.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@meal.errors.count, "error")
+            prohibited this meal from being saved:
+          %ul
+            - @meal.errors.full_messages.each do |message|
+              %li= message
+      %tr
+        %td
+          = form.text_field :name
+        %td
+          = form.number_field :protein, step: '0.01'
+        %td
+          = form.number_field :fat, step: '0.01'
+        %td
+          = form.number_field :carb, step: '0.01'
+        %td
+          = form.number_field :cal, step: '0.01'
+        %td
+          = form.submit "create meal", id: "create_meal"
     - @meals.each do |meal|
       %tr
         %td= meal.name
@@ -23,26 +44,15 @@
         %td= link_to 'Edit', edit_meal_path(meal)
         %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
     %tr
-      %th Total
-      %th= @sum_protein
-      %th= @sum_fat
-      %th= @sum_carb
-      %th= @sum_cal
+      %td Total
+      %td= @sum_protein
+      %td= @sum_fat
+      %td= @sum_carb
+      %td= @sum_cal
 %br/
-= render 'form', meal: @meal
 
-= link_to 'previous day＞', "/meals/previous"
-= link_to '＜next day', "/meals/next"
-
--# - @meals_day.each do |hash_elements|
--#   = hash_elements
--#   %br/
-
--#   -# %h3=Date::DAYNAMES[hash_elements.first]
--#   -# - hash_elements.last.each do |m|
--#   -#   = m.name
--#   -#   = m. created_at
--#   -#   %br/
+= link_to '< previous day', "/meals/previous"
+= link_to 'next day >', "/meals/next"
 
 = month_calendar events: @allmeals do |date, meals|
   = link_to date.day, meals_path(@allmeals2)

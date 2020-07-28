@@ -3,7 +3,12 @@ class MealsController < ApplicationController
   
   def index
     @meal = Meal.new
-    
+    @meal_data = Meal.find_by('name LIKE(?)', "%#{params[:name]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+
     @n_day = Date.today
     @@n_day = @n_day
     @meals = Meal.where('created_at > ?', @n_day)
@@ -37,8 +42,8 @@ class MealsController < ApplicationController
     respond_to do |format|
       if @meal.save
         @meal.update!(start_time: @meal.updated_at)
-        format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
-        format.json { render :show, status: :created, location: @meal }
+        format.html { redirect_to meals_path }
+        format.json { render :index, status: :created, location: @meal }
       else
         format.html { render :new }
         format.json { render json: @meal.errors, status: :unprocessable_entity }
@@ -68,9 +73,14 @@ class MealsController < ApplicationController
 
   def next
     @meal = Meal.new
+    @meal_data = Meal.find_by('name LIKE(?)', "%#{params[:name]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
     @@n_day = @@n_day+1
     @n_day = @@n_day
-    @meals = Meal.where('created_at > ?', @n_day)
+    @meals = Meal.where(created_at: @n_day.all_day)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)
@@ -81,9 +91,14 @@ class MealsController < ApplicationController
 
   def previous
     @meal = Meal.new
+    @meal_data = Meal.find_by('name LIKE(?)', "%#{params[:name]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
     @@n_day = @@n_day-1
     @n_day = @@n_day
-    @meals = Meal.where('created_at > ?', @n_day)
+    @meals = Meal.where(created_at: @n_day.all_day)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)

@@ -16,6 +16,7 @@ $(function() {
       $("#meal_carb").val(carb);
       cal = meal_data.cal;
       $("#meal_cal").val(cal);
+      $('#create_meal').prop('disabled', false);
     })
   });
 });
