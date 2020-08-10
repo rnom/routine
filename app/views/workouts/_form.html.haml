@@ -39,13 +39,13 @@
         %td= workout.cal
         %td= link_to 'Show', workout
         %td= link_to 'Edit', edit_workout_path(workout)
-        %td= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' }
-    -# %tr
-    -#   %td Total
-    -#   %td= @sum_protein
-    -#   %td= @sum_fat
-    -#   %td= @sum_carb
-    -#   %td= @sum_cal
+        %td= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } 
+    %tr
+      %td Total
+      %td
+      %td
+      %td
+      %td= @workout_cal
     -# %br/
 
     -# = link_to '< previous day', "/workouts/previous"

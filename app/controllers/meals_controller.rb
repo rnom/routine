@@ -11,7 +11,7 @@ class MealsController < ApplicationController
 
     @n_day = Date.today
     @@n_day = @n_day
-    @meals = Meal.where('created_at > ?', @n_day)
+    @meals = Meal.where(created_at: @n_day.all_day)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)
@@ -20,8 +20,8 @@ class MealsController < ApplicationController
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
-    @workouts = Workout.where('created_at > ?', @n_day)
-
+    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workout_cal = @workouts.sum(:cal).round(1)
   end
 
   def show
@@ -90,6 +90,10 @@ class MealsController < ApplicationController
     @sum_carb = @meals.sum(:carb).round(1)
     @sum_cal = @meals.sum(:cal).round(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
+
+    @workout = Workout.new
+    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workout_cal = @workouts.sum(:cal).round(1)
   end
 
   def previous
@@ -108,6 +112,10 @@ class MealsController < ApplicationController
     @sum_carb = @meals.sum(:carb).round(1)
     @sum_cal = @meals.sum(:cal).round(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
+
+    @workout = Workout.new
+    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workout_cal = @workouts.sum(:cal).round(1)
   end
 
   def calendar

@@ -25,7 +25,7 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to meals_path, notice: 'Workout was successfully created.' }
+        format.html { redirect_to workouts_path, notice: 'Workout was successfully created.' }
         format.json { render :show, status: :created, location: @workout }
       else
         format.html { render :new }
