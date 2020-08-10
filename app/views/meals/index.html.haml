@@ -1,60 +1,82 @@
-%p#notice= notice
-%h1= @n_day
-= pie_chart @chart, suffix: "", title: "Today's PFC Balance", colors: ["#008000", "#F00", "#000080"]
-%table
-  %thead
-    %tr
-      %td Name
-      %td Protein
-      %td Fat
-      %td Carb
-      %td Cal
-      %td{:colspan => "3"}
-  %tbody
-    = form_with model: @meal, url: {controller: 'meals', action: 'index' }, local: true do |form|
-      - if @meal.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@meal.errors.count, "error")
-            prohibited this meal from being saved:
-          %ul
-            - @meal.errors.full_messages.each do |message|
-              %li= message
-      %tr
-        %td
-          = form.text_field :name
-        %td
-          = form.number_field :protein, step: '0.01'
-        %td
-          = form.number_field :fat, step: '0.01'
-        %td
-          = form.number_field :carb, step: '0.01'
-        %td
-          = form.number_field :cal, step: '0.01'
-        %td
-          = form.submit "create meal", id: "create_meal"
-    - @meals.each do |meal|
-      %tr
-        %td= meal.name
-        %td= meal.protein
-        %td= meal.fat
-        %td= meal.carb
-        %td= meal.cal
-        %td= link_to 'Show', meal
-        %td= link_to 'Edit', edit_meal_path(meal)
-        %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
-    %tr
-      %td Total
-      %td= @sum_protein
-      %td= @sum_fat
-      %td= @sum_carb
-      %td= @sum_cal
-%br/
+= render 'toppage'
+-# %p#notice= notice
+-# %h1= @n_day
+-# %h2 Calories Remaining
+-# %table
+-#   %thead
+-#     %tr
+-#       %td Meal
+-#       %td 
+-#       %td BMR
+-#       %td 
+-#       %td Workout
+-#       %td 
+-#       %td Remaining
+-# %table
+-#   %thead
+-#     %tr
+-#       %td=@sum_cal
+-#       %td -
+-#       %td=@bmr
+-#       %td -
+-#       %td=@workout_cal
+-#       %td =
+-#       %td= "#{@sum_cal.round(0) - @bmr.round(0) - @workout_cal.round(0)} cal"
+-# = pie_chart @chart, suffix: "", title: "Today's PFC Balance", colors: ["#008000", "#F00", "#000080"]
+-# %table
+-#   %thead
+-#     %tr
+-#       %td Name
+-#       %td Protein
+-#       %td Fat
+-#       %td Carb
+-#       %td Cal
+-#       %td{:colspan => "3"}
+-#   %tbody
+-#     = form_with model: @meal, url: {controller: 'meals', action: 'index' }, local: true do |form|
+-#       - if @meal.errors.any?
+-#         #error_explanation
+-#           %h2
+-#             = pluralize(@meal.errors.count, "error")
+-#             prohibited this meal from being saved:
+-#           %ul
+-#             - @meal.errors.full_messages.each do |message|
+-#               %li= message
+-#       %tr
+-#         %td
+-#           = form.text_field :name
+-#         %td
+-#           = form.number_field :protein, step: '0.01'
+-#         %td
+-#           = form.number_field :fat, step: '0.01'
+-#         %td
+-#           = form.number_field :carb, step: '0.01'
+-#         %td
+-#           = form.number_field :cal, step: '0.01'
+-#         %td
+-#           = form.submit "create meal", id: "create_meal"
+-#     - @meals.each do |meal|
+-#       %tr
+-#         %td= meal.name
+-#         %td= meal.protein
+-#         %td= meal.fat
+-#         %td= meal.carb
+-#         %td= meal.cal
+-#         %td= link_to 'Show', meal
+-#         %td= link_to 'Edit', edit_meal_path(meal)
+-#         %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
+-#     %tr
+-#       %td Total
+-#       %td= @sum_protein
+-#       %td= @sum_fat
+-#       %td= @sum_carb
+-#       %td= @sum_cal
+-# %br/
 
-= render 'workouts/form'
+-# = render 'workouts/form'
 
-= link_to '< previous day', "/meals/previous"
-= link_to 'next day >', "/meals/next"
+-# = link_to '< previous day', "/meals/previous"
+-# = link_to 'next day >', "/meals/next"
 
 
 

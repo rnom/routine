@@ -22,6 +22,7 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day)
     @workout_cal = @workouts.sum(:cal).round(1)
+    @bmr = 1700
   end
 
   def show
@@ -94,6 +95,7 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day)
     @workout_cal = @workouts.sum(:cal).round(1)
+    @bmr = 1700
   end
 
   def previous
@@ -116,6 +118,7 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day)
     @workout_cal = @workouts.sum(:cal).round(1)
+    @bmr = 1700
   end
 
   def calendar
