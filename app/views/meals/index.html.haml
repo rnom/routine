@@ -51,19 +51,13 @@
       %td= @sum_cal
 %br/
 
+= render 'workouts/form'
+
 = link_to '< previous day', "/meals/previous"
 = link_to 'next day >', "/meals/next"
 
-= month_calendar events: @allmeals do |date, meals|
-  = link_to date.day, meals_path(@allmeals2)
-  %br/
-  - array = []
-  - meals.each do |meal|
-    = link_to meal.name, meal_path(meal)
-    = meal.protein
-    -# - array << meal.protein
-    -# = array.sum
-    -# %br/
+
+
 
 
 

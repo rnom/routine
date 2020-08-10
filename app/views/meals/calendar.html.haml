@@ -1,0 +1,20 @@
+= month_calendar events: @allmeals do |date, meals|
+  = date.day
+  %br/
+  - @sum = 0
+  %span P:
+  - meals.each do |meal|
+    - @sum += meal.protein.to_i
+  = @sum
+  %br/
+  - @sum = 0
+  %span F:
+  - meals.each do |meal|
+    - @sum += meal.fat.to_i
+  = @sum
+  %br/
+  - @sum = 0
+  %span C:
+  - meals.each do |meal|
+    - @sum += meal.carb.to_i
+  = @sum

@@ -29,3 +29,47 @@
 %br
 
 = link_to 'New Workout', new_workout_path
+
+
+-# %table
+-#   %thead
+-#     %tr
+-#       %td Menu
+-#       %td Weight
+-#       %td Set
+-#       %td Bodypart
+-#       %td Cal
+-#       %td{:colspan => "3"}
+-#   %tbody
+-#     = form_with model: @workout, url: {controller: 'workouts', action: 'index' }, local: true do |form|
+-#       - if @workout.errors.any?
+-#         #error_explanation
+-#           %h2
+-#             = pluralize(@workout.errors.count, "error")
+-#             prohibited this workout from being saved:
+-#           %ul
+-#             - @workout.errors.full_messages.each do |message|
+-#               %li= message
+-#       %tr
+-#         %td
+-#           = form.text_field :menu
+-#         %td
+-#           = form.number_field :weight
+-#         %td
+-#           = form.number_field :set
+-#         %td
+-#           = form.text_field :bodypart
+-#         %td
+-#           = form.number_field :cal
+-#         %td
+-#           = form.submit "create workout", id: "create_workout"
+-#     - @workouts.each do |workout|
+-#       %tr
+-#         %td= workout.menu
+-#         %td= workout.weight
+-#         %td= workout.set
+-#         %td= workout.bodypart
+-#         %td= workout.cal
+-#         %td= link_to 'Show', workout
+-#         %td= link_to 'Edit', edit_workout_path(workout)
+-#         %td= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' }

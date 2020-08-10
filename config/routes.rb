@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  resources :workouts
+  resources :workouts do
+    collection do
+      get 'next'
+      get 'previous'
+    end
+  end
+
   devise_for :users
   
   resources :meals do
     collection do
       get 'next'
       get 'previous'
+      get 'calendar'
     end
   end
 

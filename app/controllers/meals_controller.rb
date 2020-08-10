@@ -17,8 +17,11 @@ class MealsController < ApplicationController
     @sum_fat = @meals.sum(:fat).round(1)
     @sum_carb = @meals.sum(:carb).round(1)
     @sum_cal = @meals.sum(:cal).round(1)
-    @tests = Meal.all
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
+
+    @workout = Workout.new
+    @workouts = Workout.where('created_at > ?', @n_day)
+
   end
 
   def show
@@ -105,6 +108,10 @@ class MealsController < ApplicationController
     @sum_carb = @meals.sum(:carb).round(1)
     @sum_cal = @meals.sum(:cal).round(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
+  end
+
+  def calendar
+    @allmeals = Meal.all
   end
 
   private
