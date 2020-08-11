@@ -20,6 +20,52 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @n_day = Date.today.beginning_of_week(:monday)
+
+    @chart_cal = []
+    7.times do
+      @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
+      @sum_cal = @meals.sum(:cal).round(0)
+      array = [@n_day, @sum_cal]
+      @chart_cal << array
+      @n_day += 1
+    end
+    
+    @chart_protein = []
+    @n_day = Date.today.beginning_of_week(:monday)
+    7.times do
+      @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
+      @sum_protein = @meals.sum(:protein).round(0)
+      array = [@n_day, @sum_protein]
+      @chart_protein << array
+      @n_day += 1
+    end
+
+    @chart_fat = []
+    @n_day = Date.today.beginning_of_week(:monday)
+    7.times do
+      @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
+      @sum_fat = @meals.sum(:fat).round(0)
+      array = [@n_day, @sum_fat]
+      @chart_fat << array
+      @n_day += 1
+    end
+
+    @chart_carb = []
+    @n_day = Date.today.beginning_of_week(:monday)
+    7.times do
+      @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
+      @sum_carb = @meals.sum(:carb).round(0)
+      array = [@n_day, @sum_carb]
+      @chart_carb << array
+      @n_day += 1
+    end
+
+    # @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
+  end
+
   private
 
   def user_params

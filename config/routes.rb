@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   end
 
   root 'meals#index'
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update, :show]
 end

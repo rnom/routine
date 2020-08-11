@@ -1,5 +1,4 @@
 class Meal < ApplicationRecord
-  def protein_total
-    sum(:protein).round(1)
-  end
+  # has_many   :favorites, dependent: :destroy
+  belongs_to :user
 end

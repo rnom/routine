@@ -98,6 +98,6 @@ class WorkoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def workout_params
-      params.require(:workout).permit(:menu, :weight, :set, :bodypart, :cal, :user_id)
+      params.require(:workout).permit(:menu, :weight, :set, :bodypart, :cal, :user_id).merge(user_id: current_user.id)
     end
 end

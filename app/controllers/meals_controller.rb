@@ -11,7 +11,7 @@ class MealsController < ApplicationController
 
     @n_day = Date.today
     @@n_day = @n_day
-    @meals = Meal.where(created_at: @n_day.all_day)
+    @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)
@@ -20,7 +20,7 @@ class MealsController < ApplicationController
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
-    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
     @bmr = 1700
   end
@@ -84,7 +84,7 @@ class MealsController < ApplicationController
     end
     @@n_day = @@n_day+1
     @n_day = @@n_day
-    @meals = Meal.where(created_at: @n_day.all_day)
+    @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)
@@ -93,7 +93,7 @@ class MealsController < ApplicationController
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
-    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
     @bmr = 1700
   end
@@ -107,7 +107,7 @@ class MealsController < ApplicationController
     end
     @@n_day = @@n_day-1
     @n_day = @@n_day
-    @meals = Meal.where(created_at: @n_day.all_day)
+    @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
     @sum_protein = @meals.sum(:protein).round(1)
     @sum_fat = @meals.sum(:fat).round(1)
@@ -116,7 +116,7 @@ class MealsController < ApplicationController
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
-    @workouts = Workout.where(created_at: @n_day.all_day)
+    @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
     @bmr = 1700
   end
@@ -133,6 +133,6 @@ class MealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def meal_params
-      params.require(:meal).permit(:name, :protein, :fat, :carb, :cal, :start_time)
+      params.require(:meal).permit(:name, :protein, :fat, :carb, :cal, :start_time).merge(user_id: current_user.id)
     end
 end
