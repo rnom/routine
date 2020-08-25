@@ -8,15 +8,23 @@ $(function() {
       dataType: 'json'
     })
     .done(function(workout_data) {
-      weight = workout_data.weight;
-      $("#workout_weight").val(weight);
-      set = workout_data.set;
-      $("#workout_set").val(set);
-      bodypart = workout_data.bodypart;
-      $("#workout_bodypart").val(bodypart);
+      mets = workout_data.mets;
+      $("#workout_mets").val(mets);
+      time = workout_data.time;
+      $("#workout_time").val(time);
       cal = workout_data.cal;
       $("#workout_cal").val(cal);
       $('#create_workout').prop('disabled', false);
     })
   });
+});
+
+function update_cal(){
+  var cal = $('#workout_mets').val() * $('#workout_time').val() * 1.05 * gon.bodyweight;
+  $('#workout_cal').val(cal).round(1);
+}
+$(function() {
+$('input[type="number"]').on('keyup change', function() {
+  update_cal();
+});
 });

@@ -44,9 +44,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_095644) do
 
   create_table "workouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "menu", null: false
-    t.integer "weight", null: false
-    t.integer "set", null: false
-    t.string "bodypart", null: false
+    t.float "mets", null: false
+    t.float "time", null: false
     t.integer "cal"
     t.bigint "user_id"
     t.datetime "created_at", null: false

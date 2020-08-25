@@ -9,6 +9,7 @@ class WorkoutsController < ApplicationController
   end
 
   def new
+    gon.bodyweight = current_user.bodyweight
     @workout = Workout.new
     @workout_data = Workout.find_by('menu LIKE(?)', "%#{params[:menu]}%")
     respond_to do |format|
@@ -25,7 +26,7 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to workouts_path, notice: 'Workout was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Workout was successfully created.' }
         format.json { render :show, status: :created, location: @workout }
       else
         format.html { render :new }
@@ -98,6 +99,6 @@ class WorkoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def workout_params
-      params.require(:workout).permit(:menu, :weight, :set, :bodypart, :cal, :user_id).merge(user_id: current_user.id)
+      params.require(:workout).permit(:menu, :mets, :time, :cal, :user_id).merge(user_id: current_user.id)
     end
 end

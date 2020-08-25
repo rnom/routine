@@ -1,4 +1,4 @@
-json.weight @workout_data.weight
-json.set @workout_data.set
-json.bodypart @workout_data.bodypart
+json.mets @workout_data.mets
+json.time @workout_data.time
 json.cal @workout_data.cal
+json.bodyweight @user.bodyweight

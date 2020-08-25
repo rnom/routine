@@ -23,6 +23,7 @@ class MealsController < ApplicationController
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
     @bmr = 1700
+    gon.bodyweight = current_user.bodyweight
   end
 
   def show

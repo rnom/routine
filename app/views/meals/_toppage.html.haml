@@ -1,6 +1,8 @@
 %p#notice= notice
+= link_to '< previous day', "/meals/previous"
 %h1= @n_day
-%h2 Calories Remaining
+= link_to 'next day >', "/meals/next"
+%h2 Todays's calorie
 %table
   %thead
     %tr
@@ -41,6 +43,12 @@
           %ul
             - @meal.errors.full_messages.each do |message|
               %li= message
+      %h3 Protein: 
+      ="#{@sum_protein}g"
+      %h3 Fat: 
+      ="#{@sum_fat}g"
+      %h3 Carbohydrate: 
+      ="#{@sum_carb}g"
       %tr
         %td
           = form.text_field :name
@@ -61,8 +69,7 @@
         %td= meal.fat
         %td= meal.carb
         %td= meal.cal
-        %td= link_to 'Show', meal
-        %td= link_to 'Edit', edit_meal_path(meal)
+        %td= link_to 'Edit', edit_meal_path(meal) 
         %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
     %tr
       %td Total
@@ -74,8 +81,6 @@
 
 = render 'workouts/form'
 
-= link_to '< previous day', "/meals/previous"
-= link_to 'next day >', "/meals/next"
 
 
 

@@ -4,9 +4,8 @@
   %thead
     %tr
       %th Menu
-      %th Weight
-      %th Set
-      %th Bodypart
+      %th Mets
+      %th Time
       %th Cal
       %th User
       %th
@@ -17,9 +16,8 @@
     - @workouts.each do |workout|
       %tr
         %td= workout.menu
-        %td= workout.weight
-        %td= workout.set
-        %td= workout.bodypart
+        %td= workout.mets
+        %td= workout.time
         %td= workout.cal
         %td= link_to 'Show', workout
         %td= link_to 'Edit', edit_workout_path(workout)

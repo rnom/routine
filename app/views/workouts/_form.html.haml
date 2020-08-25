@@ -1,10 +1,9 @@
 %table
   %thead
     %tr
-      %td Menu
-      %td Weight
-      %td Sets
-      %td Bodypart
+      %td Workout
+      %td Mets
+      %td Time (h)
       %td Cal
       %td{:colspan => "3"}
   %tbody
@@ -21,11 +20,9 @@
         %td
           = form.text_field :menu
         %td
-          = form.number_field :weight
+          = form.number_field :mets, step: '0.1'
         %td
-          = form.number_field :set
-        %td
-          = form.text_field :bodypart
+          = form.number_field :time, step: '0.01'
         %td
           = form.number_field :cal, step: '0.01'
         %td
@@ -33,12 +30,9 @@
     - @workouts.each do |workout|
       %tr
         %td= workout.menu
-        %td= workout.weight
-        %td= workout.set
-        %td= workout.bodypart
+        %td= workout.mets
+        %td= workout.time
         %td= workout.cal
-
-        %td= link_to 'Show', workout
         %td= link_to 'Edit', edit_workout_path(workout)
         %td= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } 
     %tr
@@ -47,10 +41,6 @@
       %td
       %td
       %td= @workout_cal
-    -# %br/
-
-    -# = link_to '< previous day', "/workouts/previous"
-    -# = link_to 'next day >', "/workouts/next"
 
 
 
