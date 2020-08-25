@@ -17,8 +17,8 @@
             = link_to "Log-out", destroy_user_session_path, method: :delete
             = link_to 'Edit Account', edit_user_registration_path(current_user)
             = link_to 'New Workout', new_workout_path
-            = link_to 'Monthly Calendar', calendar_meals_path
-            = link_to "Mypage", user_path(current_user)
+            = link_to 'Weekly Calendar', calendar_meals_path
+            = link_to "My page", user_path(current_user)
         - else
           .grid-6
             = link_to "Log-in", new_user_session_path, class: 'post'
