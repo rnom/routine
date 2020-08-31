@@ -22,8 +22,12 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
-    @bmr = 1700
+    @tdee = current_user.tdee
     gon.bodyweight = current_user.bodyweight
+
+    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_protein = current_user.bodyweight*2
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
   end
 
   def show
@@ -96,7 +100,12 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
-    @bmr = 1700
+    @tdee = current_user.tdee
+    gon.bodyweight = current_user.bodyweight
+
+    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_protein = current_user.bodyweight*2
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
   end
 
   def previous
@@ -119,11 +128,19 @@ class MealsController < ApplicationController
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
     @workout_cal = @workouts.sum(:cal).round(1)
-    @bmr = 1700
+    @tdee = current_user.tdee
+    gon.bodyweight = current_user.bodyweight
+
+    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_protein = current_user.bodyweight*2
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
   end
 
   def calendar
     @allmeals = Meal.all
+    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_protein = current_user.bodyweight*2
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
   end
 
   private

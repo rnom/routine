@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_095644) do
+ActiveRecord::Schema.define(version: 2020_08_31_144208) do
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_095644) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.integer "bodyweight", null: false
-    t.float "height", null: false
-    t.float "bmi"
+    t.integer "height", null: false
+    t.float "bmr"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2020_07_25_095644) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["nickname"], name: "index_users_on_nickname", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.float "pal"
+    t.float "tdee"
+    t.integer "age"
   end
 
   create_table "workouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

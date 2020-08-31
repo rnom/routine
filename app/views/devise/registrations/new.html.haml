@@ -12,7 +12,15 @@
   .field
     = f.label :height
     %br/
-    = f.number_field :height,step: '0.01', autofocus: true, autocomplete: "height(m)"
+    = f.number_field :height, autofocus: true, autocomplete: "height(cm)"
+  .field
+    = f.label :age
+    %br/
+    = f.number_field :age, autofocus: true, autocomplete: "age"
+  .field
+    = f.label :pal
+    %br/
+    = f.number_field :pal, step: '0.1', autofocus: true, autocomplete: "pal(physical activity level)"
   .field
     = f.label :email
     %br/

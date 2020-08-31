@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
   validates :bodyweight, presence: true
   validates :height, presence: true
+  validates :age, presence: true
+  validates :pal, presence: true
 
   has_many :favorites, dependent: :destroy
   has_many :meals, dependent: :destroy
@@ -14,13 +16,19 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   before_save do
-    height_2 = height ** 2
-    self.bmi = bodyweight.fdiv(height_2)
+    bmr = 10 * bodyweight + 6.25 * height - 5 * age + 5
+    self.bmr = bmr.round(0)
+
+    tdee = bmr * pal
+    self.tdee = tdee.round(0)
   end
 
   before_update do
-    height_2 = height ** 2
-    self.bmi = bodyweight.fdiv(height_2)
+    bmr = 10 * bodyweight + 6.25 * height - 5 * age + 5
+    self.bmr = bmr.round(0)
+
+    tdee = bmr * pal
+    self.tdee = tdee.round(0)
   end
 
 end
