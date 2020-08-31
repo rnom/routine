@@ -2,7 +2,7 @@
 = link_to '< previous day', "/meals/previous"
 %h1= @n_day
 = link_to 'next day >', "/meals/next"
-%h2 Todays's calorie
+%h2 Today's Calorie
 %table
   %thead
     %tr
@@ -27,7 +27,7 @@
 %table
   %thead
     %tr
-      %td Name
+      %td Food
       %td Protein
       %td Fat
       %td Carb
@@ -43,11 +43,11 @@
           %ul
             - @meal.errors.full_messages.each do |message|
               %li= message
-      %h3 Protein: 
+      %h3 □ Protein: 
       ="#{@sum_protein}g"
-      %h3 Fat: 
+      %h3 □ Fat: 
       ="#{@sum_fat}g"
-      %h3 Carbohydrate: 
+      %h3 □ Carbohydrate: 
       ="#{@sum_carb}g"
       %tr
         %td

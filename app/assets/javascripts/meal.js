@@ -20,3 +20,9 @@ $(function() {
     })
   });
 });
+
+$(function() {
+  $('.day').click(function() {
+    $('.is-show').toggle();
+  })
+});
