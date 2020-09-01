@@ -3,6 +3,12 @@
 -# = line_chart @chart_protein, discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein"
 -# = line_chart @chart_fat, discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat"
 = pie_chart @chart, suffix: "", title: "Target PFC Balance", colors: ["#008000", "#F00", "#000080"]
+%h3 □ Protein: 
+="Target: #{@target_protein}g"
+%h3 □ Fat: 
+="Target: #{@target_fat}g"
+%h3 □ Carbohydrate: 
+="Target: #{@target_carb}g"
 = line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal"
 = line_chart [{name: "Total Protein", data: @chart_protein},{name: "Target", data: @protein_target}], discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein"
 = line_chart [{name: "Total Fat", data: @chart_fat},{name: "Target", data: @fat_target}], discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat"

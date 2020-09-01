@@ -21,10 +21,10 @@ $(function() {
 
 function update_cal(){
   var cal = $('#workout_mets').val() * $('#workout_time').val() * 1.05 * gon.bodyweight;
-  $('#workout_cal').val(cal).round(1);
+  $('#workout_cal').val(cal);
 }
 $(function() {
-$('input[type="number"]').on('keyup change', function() {
+$('.workout_data').on('keyup change', function() {
   update_cal();
 });
 });

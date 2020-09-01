@@ -12,7 +12,9 @@
     %header.header
       .header__bar.row
         %h1.grid-6
-          %a{:href => "/"} Routine
+          -# %a{:href => "/"} Routine
+          = link_to root_path do
+            =image_tag '/logo.jpg', class: 'logo', size: '150x48'
         - if user_signed_in?
           .user_nav.grid-6
             = link_to "My page", user_path(current_user)

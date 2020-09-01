@@ -16,11 +16,12 @@
           %ul
             - @workout.errors.full_messages.each do |message|
               %li= message
-      %tr
-        %td
+      %tr.workout_data
+        %td 
           = form.text_field :menu
         %td
-          = form.number_field :mets, step: '0.1'
+          -# = form.number_field :mets, step: '0.1'
+          = form.select :mets, [["高強度トレーニング: 8.0 METs", 8.0], ["通常強度トレーニング : 3.8 METs", 3.8]]
         %td
           = form.number_field :time, step: '0.01'
         %td
