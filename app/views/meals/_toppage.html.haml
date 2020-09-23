@@ -1,93 +1,117 @@
 %p#notice= notice
-= link_to '< previous day', "/meals/previous"
-%h1= @n_day
-= link_to 'next day >', "/meals/next"
-%h2 Today's Calorie
-%table
-  %thead
-    %tr
-      %td Meal
-      %td 
-      %td TDEE
-      %td 
-      %td Workout
-      %td 
-      %td Remaining
-%table
-  %thead
-    %tr
-      %td=@sum_cal
-      %td -
-      %td=@tdee
-      %td -
-      %td=@workout_cal
-      %td =
-      %td= "#{@sum_cal.round(0) - @tdee.round(0) - @workout_cal.round(0)} cal"
-= pie_chart @chart, suffix: "", title: "Today's PFC Balance", colors: ["#008000", "#F00", "#000080"]
-%h3 □ Protein: 
-="#{@sum_protein}g (Target: #{@target_protein}g)"
-%h3 □ Fat: 
-="#{@sum_fat}g (Target: #{@target_fat}g)"
-%h3 □ Carbohydrate: 
-="#{@sum_carb}g (Target: #{@target_carb}g)"
-%table
-  %thead
-    %tr
-      %td Food
-      %td Protein
-      %td Fat
-      %td Carb
-      %td Cal
-      %td{:colspan => "3"}
-  %tbody
-    = form_with model: @meal, url: {controller: 'meals', action: 'index' }, local: true do |form|
-      - if @meal.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@meal.errors.count, "error")
-            prohibited this meal from being saved:
-          %ul
-            - @meal.errors.full_messages.each do |message|
-              %li= message
-      %tr
-        %td
-          = form.text_field :name
-        %td
-          = form.number_field :protein, step: '0.01'
-        %td
-          = form.number_field :fat, step: '0.01'
-        %td
-          = form.number_field :carb, step: '0.01'
-        %td
-          = form.number_field :cal, step: '0.01'
-        %td
-          = form.submit "create meal", id: "create_meal"
-    - @meals.each do |meal|
-      %tr
-        %td= meal.name
-        %td= meal.protein
-        %td= meal.fat
-        %td= meal.carb
-        %td= meal.cal
-        %td= link_to 'Edit', edit_meal_path(meal) 
-        %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
-    %tr
-      %td Total
-      %td= @sum_protein
-      %td= @sum_fat
-      %td= @sum_carb
-      %td= @sum_cal
-%br/
+.main_body
+  .date_box
+    = link_to '< previous day', "/meals/previous", data: {"turbolinks" => false}, class:"date"
+    %h1.date
+      = @n_day
+    = link_to 'next day >', "/meals/next", data: {"turbolinks" => false}, class:"date"
+  .PFC_databox
+    .PFCgraph
+      = pie_chart @chart, suffix: "", title: "Today's PFC Balance", colors: ["#FF6600", "#F00", "#444444"]
+    .PFC_remaining_data
+      %h3 Today's remaining
+      %br
+      - if @remaining_protein>=0
+        %h3 
+          = "□ Protein: #{@remaining_protein}g"
+      -else
+        %h3.over_achieved 
+          = "□ Protein: #{-@remaining_protein}g over"
+      - if @remaining_fat>=0
+        %h3 
+          = "□ Fat: #{@remaining_fat}g"
+      -else
+        %h3.over_achieved  
+          = "□ Fat: #{-@remaining_fat}g over"
+      - if @remaining_carb>=0
+        %h3 
+          = "□ Carbohydrate: #{@remaining_carb}g"
+      -else
+        %h3.over_achieved 
+          = "□ Carbohydrate: #{-@remaining_carb}g over"
+      - if @remaining_cal>=0
+        %h3 
+          = "□ Cal: #{@remaining_cal}kcal"
+      -else
+        %h3.over_achieved 
+          = "□ kCal: #{-@remaining_cal}kcal over"
+  .table_box
+    %table.meal_table
+      %thead
+        %tr.meal_table_titlerow
+          %td.meal_table_titlerow_title-long Food
+          %td.meal_table_titlerow_title Protein
+          %td.meal_table_titlerow_title Fat
+          %td.meal_table_titlerow_title Carb
+          %td.meal_table_titlerow_title Cal
+          %td.meal_table_titlerow_title Edit
+      - unless @n_day != Date.today
+        %tbody
+          = form_with model: @meal, url: {controller: 'meals', action: 'index' }, local: true do |form|
+            - if @meal.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@meal.errors.count, "error")
+                  prohibited this meal from being saved:
+                %ul
+                  - @meal.errors.full_messages.each do |message|
+                    %li= message
+            %tr.meal_table_formrow
+              %td.meal_table_formrow_form
+                = form.text_field :name
+              %td.meal_table_formrow_form
+                = form.number_field :protein, step: '0.01'
+              %td.meal_table_formrow_form
+                = form.number_field :fat, step: '0.01'
+              %td.meal_table_formrow_form
+                = form.number_field :carb, step: '0.01'
+              %td.meal_table_formrow_form
+                = form.number_field :cal, step: '0.01'
+              %td.meal_table_formrow_form
+                = form.submit "Save", id: "create_meal"
+          - @meals.each do |meal|
+            %tr.meal_table_itemrow
+              %td.meal_table_itemrow_item_name= meal.name
+              %td.meal_table_itemrow_item= meal.protein
+              %td.meal_table_itemrow_item= meal.fat
+              %td.meal_table_itemrow_item= meal.carb
+              %td.meal_table_itemrow_item= meal.cal
+              %td.meal_table_itemrow_icon= link_to '⚙', edit_meal_path(meal), class: "icon_edit"
+              %td.meal_table_itemrow_icon= link_to '🗑', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon_delete"
+          %tr.meal_table_totalrow
+            %td.meal_table_totalrow_total Total
+            %td.meal_table_totalrow_total= @sum_protein
+            %td.meal_table_totalrow_total= @sum_fat
+            %td.meal_table_totalrow_total= @sum_carb
+            %td.meal_table_totalrow_total= @sum_cal
+            %td.meal_table_totalrow_total{:colspan => "3"}
 
-= render 'workouts/form'
+      - else
+        %tbody
+          - if @meal.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@meal.errors.count, "error")
+                prohibited this meal from being saved:
+              %ul
+                - @meal.errors.full_messages.each do |message|
+                  %li= message
+          - @meals.each do |meal|
+            %tr.meal_table_itemrow
+              %td.meal_table_itemrow_item_name= meal.name
+              %td.meal_table_itemrow_item= meal.protein
+              %td.meal_table_itemrow_item= meal.fat
+              %td.meal_table_itemrow_item= meal.carb
+              %td.meal_table_itemrow_item= meal.cal
+              %td.meal_table_itemrow_icon= link_to '⚙', edit_meal_path(meal), class: "icon_edit"
+              %td.meal_table_itemrow_icon= link_to '🗑', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon_delete"
+          %tr.meal_table_totalrow
+            %td.meal_table_totalrow_total Total
+            %td.meal_table_totalrow_total= @sum_protein
+            %td.meal_table_totalrow_total= @sum_fat
+            %td.meal_table_totalrow_total= @sum_carb
+            %td.meal_table_totalrow_total= @sum_cal
+            %td.meal_table_totalrow_total
 
-
-
-
-
-
-
-
-  
-
-
+    %br/
+    = render 'workouts/form'

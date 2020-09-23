@@ -24,7 +24,7 @@ function update_cal(){
   $('#workout_cal').val(cal);
 }
 $(function() {
-$('.workout_data').on('keyup change', function() {
+$('.workout_table_trainingrow').on('keyup change', function() {
   update_cal();
 });
 });

@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   end
 
   root 'meals#index'
+  # root 'meals#calendar'
   resources :users, only: [:new, :create, :edit, :update, :show]
 end

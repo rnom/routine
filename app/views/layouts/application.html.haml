@@ -10,19 +10,17 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header.header
-      .header__bar.row
-        %h1.grid-6
-          -# %a{:href => "/"} Routine
-          = link_to root_path do
-            =image_tag '/logo.jpg', class: 'logo', size: '150x48'
-        - if user_signed_in?
-          .user_nav.grid-6
-            = link_to "My page", user_path(current_user)
-            = link_to 'Calendar', calendar_meals_path
-            = link_to 'Edit Account', edit_user_registration_path(current_user)
-            = link_to "Log-out", destroy_user_session_path, method: :delete
-        - else
-          .grid-6
-            = link_to "Log-in", new_user_session_path, class: 'post'
-            = link_to "Sign-up", new_user_registration_path, class: 'post'
+      .navigation_top
+        = link_to root_path, data: {"turbolinks" => false} do
+          =image_tag '/logo.jpg', class: 'logo', size: '150x48'
+      - if user_signed_in?
+        .navigation_box
+          = link_to "My page", user_path(current_user), class: "navigation_item"
+          = link_to 'Calendar', calendar_meals_path, data: {"turbolinks" => false}, class: "navigation_item"
+          = link_to 'Edit Account', edit_user_registration_path(current_user), class: "navigation_item"
+          = link_to "Log-out", destroy_user_session_path, method: :delete, class: "navigation_item"
+      - else
+        .grid-6
+          = link_to "Log-in", new_user_session_path, class: 'navigation_item'
+          = link_to "Sign-up", new_user_registration_path, class: 'navigation_item'
     = yield

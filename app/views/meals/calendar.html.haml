@@ -1,58 +1,36 @@
--# = month_calendar events: @allmeals do |date, meals|
--#   = date.day
--#   %br/
--#   - @sum = 0
--#   %span P:
--#   - meals.each do |meal|
--#     - @sum += meal.protein.to_i
--#   = @sum
--#   %br/
--#   - @sum = 0
--#   %span F:
--#   - meals.each do |meal|
--#     - @sum += meal.fat.to_i
--#   = @sum
--#   %br/
--#   - @sum = 0
--#   %span C:
--#   - meals.each do |meal|
--#     - @sum += meal.carb.to_i
--#   = @sum
-
-
--# day wday-6 past current-month
-.calender
-  = month_calendar events: @allmeals do |date, meals|
-    = date.day
-    - @sum_protein = 0
-    - meals.each do |meal|
-      - @sum_protein += meal.protein.to_i
-    - @sum_fat = 0
-    - meals.each do |meal|
-      - @sum_fat += meal.fat.to_i
-    - @sum_carb = 0
-    - meals.each do |meal|
-      - @sum_carb += meal.carb.to_i
-    - if @sum_protein >= @target_protein && @sum_fat <= @target_fat && @sum_carb <= @target_carb
-      = image_tag '/チェックマーク3.jpg', class: 'checkmark', size: '163x73'
-      .daily_macro.is-show
-        %span □ P:
-        = @sum_protein
-        %br/
-        %span □ F:
-        = @sum_fat
-        %br/
-        %span □ C:
-        = @sum_carb
-    -elsif date <= Date.today 
-      = image_tag '/バツマーク.jpg', class: 'checkmark', size: '163x73'
-      .daily_macro.is-show
-        %span □ P:
-        = @sum_protein
-        %br/
-        %span □ F:
-        = @sum_fat
-        %br/
-        %span □ C:
-        = @sum_carb
-    
+.main_body
+  .calendar
+    = month_calendar events: @allmeals do |date, meals|
+      = date.day
+      - @sum_protein = 0
+      - meals.each do |meal|
+        - @sum_protein += meal.protein.to_i
+      - @sum_fat = 0
+      - meals.each do |meal|
+        - @sum_fat += meal.fat.to_i
+      - @sum_carb = 0
+      - meals.each do |meal|
+        - @sum_carb += meal.carb.to_i
+      - if @sum_protein >= @target_protein && @sum_fat <= @target_fat && @sum_carb <= @target_carb
+        = image_tag '/チェックマーク3.jpg', class: 'checkmark', size: '163x73'
+        .daily_macro.is-show
+          %span □ P:
+          = @sum_protein
+          %br/
+          %span □ F:
+          = @sum_fat
+          %br/
+          %span □ C:
+          = @sum_carb
+      -elsif date <= Date.today 
+        = image_tag '/バツマーク.jpg', class: 'checkmark', size: '163x73'
+        .daily_macro.is-show
+          %span □ P:
+          = @sum_protein
+          %br/
+          %span □ F:
+          = @sum_fat
+          %br/
+          %span □ C:
+          = @sum_carb
+      

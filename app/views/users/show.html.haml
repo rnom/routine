@@ -1,15 +1,58 @@
-=@user.nickname
--# = line_chart @chart_cal, discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal"
--# = line_chart @chart_protein, discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein"
--# = line_chart @chart_fat, discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat"
-= pie_chart @chart, suffix: "", title: "Target PFC Balance", colors: ["#008000", "#F00", "#000080"]
-%h3 □ Protein: 
-="Target: #{@target_protein}g"
-%h3 □ Fat: 
-="Target: #{@target_fat}g"
-%h3 □ Carbohydrate: 
-="Target: #{@target_carb}g"
-= line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal"
-= line_chart [{name: "Total Protein", data: @chart_protein},{name: "Target", data: @protein_target}], discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein"
-= line_chart [{name: "Total Fat", data: @chart_fat},{name: "Target", data: @fat_target}], discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat"
-= line_chart [{name: "Total Carb", data: @chart_carb},{name: "Target", data: @carb_target}], discrete: true, xtitle: "Date", ytitle: "Total Carb", label: "Daily Carb"
+.main_body
+  .data_box
+    .personal_data_box
+      .user_name
+        = "#{current_user.nickname}'s personal data"
+      .personal_data
+        .personal_data_body
+          %br
+          ="□ Height:                               #{current_user.height}cm"
+          %br
+          ="□ Weight:                               #{current_user.bodyweight}kg"
+          %br
+          ="□ Age:                                  #{current_user.age}year's old"
+        .personal_data_figures
+          %br
+          ="□ BMR(Basal Metabolic Rate):            #{current_user.bmr}kcal"
+          %br
+          ="□ TDEE(Total Daily Energy Expenditure): #{current_user.tdee}kcal"
+          %br
+          ="□ PAL(Physical Activity Level):         #{current_user.pal}"
+          %br
+
+    .PFC_box
+      .PFCgraph
+        = pie_chart @chart, suffix: "", title: "Target PFC Balance", colors: ["#FF6600", "#F00", "#444444"]
+      .PFC_target_data
+        %h3 Target: 
+        ="□ Protein: #{@target_protein}g"
+        %br
+        ="□ Fat: #{@target_fat}g" 
+        %br
+        ="□ Carb: #{@target_carb}g"
+        %br
+        %br
+
+    -# = form_with url: user_path do |f|
+    -#  %span Start_date
+    -#  = f.date_select :start_date
+    -#  %span End_date
+    -#  = f.date_select :end_date
+
+  .chart_box
+    .chart_box_cal
+      .chart_box_cal_data
+      .chart_box_cal_chart
+        = line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
+    .chart_box_protein
+      .chart_box_protein_chart
+        = line_chart [{name: "Total Protein", data: @chart_protein},{name: "Target", data: @protein_target}], discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
+      .chart_box_protein_data
+    .chart_box_fat
+      .chart_box_fat_data
+      .chart_box_fat_chart
+        = line_chart [{name: "Total Fat", data: @chart_fat},{name: "Target", data: @fat_target}], discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
+    .chart_box_carb
+      .chart_box_carb_chart
+        = line_chart [{name: "Total Carb", data: @chart_carb},{name: "Target", data: @carb_target}], discrete: true, xtitle: "Date", ytitle: "Total Carb", label: "Daily Carb", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
+      .chart_box_carb_data

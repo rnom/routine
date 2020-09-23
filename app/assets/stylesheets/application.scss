@@ -1,5 +1,9 @@
+@import "reset";
+@import "modules/application";
 @import "modules/user";
-@import "modules/meals";
+@import "modules/mainpage";
+@import "modules/calendar";
+@import "modules/mypage";
 @import "simple_calendar";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

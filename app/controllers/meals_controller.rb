@@ -13,21 +13,27 @@ class MealsController < ApplicationController
     @@n_day = @n_day
     @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
-    @sum_protein = @meals.sum(:protein).round(1)
-    @sum_fat = @meals.sum(:fat).round(1)
-    @sum_carb = @meals.sum(:carb).round(1)
-    @sum_cal = @meals.sum(:cal).round(1)
+    @sum_protein = @meals.sum(:protein).floor(1)
+    @sum_fat = @meals.sum(:fat).floor(1)
+    @sum_carb = @meals.sum(:carb).floor(1)
+    @sum_cal = @meals.sum(:cal).floor(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
-    @workout_cal = @workouts.sum(:cal).round(1)
+    @workout_cal = @workouts.sum(:cal).floor(1)
     @tdee = current_user.tdee
     gon.bodyweight = current_user.bodyweight
 
-    @target_fat = (current_user.tdee*0.25/9).round(1)
-    @target_protein = current_user.bodyweight*2
-    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
+    @target_fat = (current_user.tdee*0.25/9).floor(1)
+    @target_protein = (current_user.bodyweight*2).floor(1)
+    @target_carb = ((current_user.tdee-(@target_fat*9+@target_protein*4))/4).floor(0)
+
+    @remaining_protein = (@target_protein-@sum_protein).floor(1)
+    @remaining_fat = (@target_fat-@sum_fat).floor(1)
+    @remaining_carb = (@target_carb-@sum_carb).floor(1)
+    @remaining_cal = (@tdee+@workout_cal-@sum_cal).floor(1)
+
   end
 
   def show
@@ -91,21 +97,26 @@ class MealsController < ApplicationController
     @n_day = @@n_day
     @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
-    @sum_protein = @meals.sum(:protein).round(1)
-    @sum_fat = @meals.sum(:fat).round(1)
-    @sum_carb = @meals.sum(:carb).round(1)
-    @sum_cal = @meals.sum(:cal).round(1)
+    @sum_protein = @meals.sum(:protein).floor(1)
+    @sum_fat = @meals.sum(:fat).floor(1)
+    @sum_carb = @meals.sum(:carb).floor(1)
+    @sum_cal = @meals.sum(:cal).floor(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
-    @workout_cal = @workouts.sum(:cal).round(1)
+    @workout_cal = @workouts.sum(:cal).floor(1)
     @tdee = current_user.tdee
     gon.bodyweight = current_user.bodyweight
 
-    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_fat = (current_user.tdee*0.25/9).floor(1)
     @target_protein = current_user.bodyweight*2
-    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.floor(1)
+
+    @remaining_protein = (@target_protein-@sum_protein).floor(1)
+    @remaining_fat = (@target_fat-@sum_fat).floor(1)
+    @remaining_carb = (@target_carb-@sum_carb).floor(1)
+    @remaining_cal = (@tdee+@workout_cal-@sum_cal).floor(1)
   end
 
   def previous
@@ -119,28 +130,33 @@ class MealsController < ApplicationController
     @n_day = @@n_day
     @meals = Meal.where(created_at: @n_day.all_day, user_id: current_user.id)
     @allmeals = Meal.all
-    @sum_protein = @meals.sum(:protein).round(1)
-    @sum_fat = @meals.sum(:fat).round(1)
-    @sum_carb = @meals.sum(:carb).round(1)
-    @sum_cal = @meals.sum(:cal).round(1)
+    @sum_protein = @meals.sum(:protein).floor(1)
+    @sum_fat = @meals.sum(:fat).floor(1)
+    @sum_carb = @meals.sum(:carb).floor(1)
+    @sum_cal = @meals.sum(:cal).floor(1)
     @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
 
     @workout = Workout.new
     @workouts = Workout.where(created_at: @n_day.all_day, user_id: current_user.id)
-    @workout_cal = @workouts.sum(:cal).round(1)
+    @workout_cal = @workouts.sum(:cal).floor(1)
     @tdee = current_user.tdee
     gon.bodyweight = current_user.bodyweight
 
-    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_fat = (current_user.tdee*0.25/9).floor(1)
     @target_protein = current_user.bodyweight*2
-    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.floor(1)
+
+    @remaining_protein = (@target_protein-@sum_protein).floor(1)
+    @remaining_fat = (@target_fat-@sum_fat).floor(1)
+    @remaining_carb = (@target_carb-@sum_carb).floor(1)
+    @remaining_cal = (@tdee+@workout_cal-@sum_cal).floor(1)
   end
 
   def calendar
     @allmeals = Meal.all
-    @target_fat = (current_user.tdee*0.25/9).round(1)
+    @target_fat = (current_user.tdee*0.25/9).floor(1)
     @target_protein = current_user.bodyweight*2
-    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.round(1)
+    @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.floor(1)
   end
 
   private

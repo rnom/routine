@@ -1,0 +1,78 @@
+.data_box {
+  .personal_data_box {
+    padding: 20px 0 0 20px;
+    .user_name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .personal_data {
+      font-size: 18px;
+      display: flex;
+      &_body {
+        margin-right: 60px;
+      }
+      &_figures {
+
+      }
+    }
+  }
+  .PFC_box {
+    display: flex;
+    padding-top: 30px;
+    align-items: center;
+    margin-left: 27%;
+    .PFC_target_data {
+    margin-left: 8%;
+    font-size: 30px;
+    margin-top: 8%;
+    }
+  }
+}
+.chart_box {
+  padding-top: 30px;
+  &_cal {
+    display: flex;
+    justify-content: space-between;
+    margin: 0  50px 0 50px;
+    &_data {
+
+    }
+    &_chart {
+      
+    }
+  }
+  &_protein {
+    display: flex;
+    justify-content: space-between;
+    margin: 0  50px 0 50px;
+    &_data {
+
+    }
+    &_chart {
+
+    }
+  }
+  &_fat {
+    display: flex;
+    justify-content: space-between;
+    margin: 0  50px 0 50px;
+    &_data {
+
+    }
+    &_chart {
+
+    }
+  }
+  &_carb {
+    display: flex;
+    justify-content: space-between;
+    margin: 0  50px 0 50px;
+    &_data {
+
+    }
+    &_chart {
+
+    }
+  }
+}
+

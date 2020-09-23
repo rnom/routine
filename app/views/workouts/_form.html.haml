@@ -1,13 +1,49 @@
-%table
+%table.workout_table
   %thead
-    %tr
-      %td Workout
-      %td Mets
-      %td Time (h)
-      %td Cal
-      %td{:colspan => "3"}
-  %tbody
-    = form_with model: @workout, url: {controller: 'workouts', action: 'index' }, local: true do |form|
+    %tr.workout_table_titlerow
+      %td.workout_table_titlerow_title-long Workout
+      %td.workout_table_titlerow_title-long Mets
+      %td.workout_table_titlerow_title Time (h)
+      %td.workout_table_titlerow_title Cal
+      %td.workout_table_titlerow_title Edit
+  - unless @n_day != Date.today
+    %tbody
+      = form_with model: @workout, url: {controller: 'workouts', action: 'index' }, local: true do |form|
+        - if @workout.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@workout.errors.count, "error")
+              prohibited this workout from being saved:
+            %ul
+              - @workout.errors.full_messages.each do |message|
+                %li= message
+        %tr.workout_table_formrow
+          %td.workout_table_formrow_form 
+            = form.text_field :menu
+          %td.workout_table_formrow_form
+            = form.select :mets, [["High level: 8.0 METs", 8.0], ["Low level : 3.8 METs", 3.8]],class: "mets"
+          %td.workout_table_formrow_form
+            = form.number_field :time, step: '0.01'
+          %td.workout_table_formrow_form
+            = form.number_field :cal, step: '0.01'
+          %td.workout_table_formrow_form
+            = form.submit "Save", id: "create_workout"
+      - @workouts.each do |workout|
+        %tr.workout_table_trainingrow
+          %td.workout_table_trainingrow_training= workout.menu
+          %td.workout_table_trainingrow_training= workout.mets
+          %td.workout_table_trainingrow_training= workout.time
+          %td.workout_table_trainingrow_training= workout.cal
+          %td.workout_table_trainingrow_icon= link_to '⚙', edit_workout_path(workout), class: "icon_edit"
+          %td.workout_table_trainingrow_icon= link_to '🗑', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon_delete"
+      %tr.workout_table_totalrow
+        %td.workout_table_totalrow_total Total
+        %td.workout_table_totalrow_total
+        %td.workout_table_totalrow_total
+        %td.workout_table_totalrow_total= @workout_cal
+        %td.workout_table_totalrow_total
+  - else
+    %tbody
       - if @workout.errors.any?
         #error_explanation
           %h2
@@ -16,33 +52,19 @@
           %ul
             - @workout.errors.full_messages.each do |message|
               %li= message
-      %tr.workout_data
-        %td 
-          = form.text_field :menu
-        %td
-          -# = form.number_field :mets, step: '0.1'
-          = form.select :mets, [["高強度トレーニング: 8.0 METs", 8.0], ["通常強度トレーニング : 3.8 METs", 3.8]]
-        %td
-          = form.number_field :time, step: '0.01'
-        %td
-          = form.number_field :cal, step: '0.01'
-        %td
-          = form.submit "create workout", id: "create_workout"
-    - @workouts.each do |workout|
-      %tr
-        %td= workout.menu
-        %td= workout.mets
-        %td= workout.time
-        %td= workout.cal
-        %td= link_to 'Edit', edit_workout_path(workout)
-        %td= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } 
-    %tr
-      %td Total
-      %td
-      %td
-      %td
-      %td= @workout_cal
-
-
+      - @workouts.each do |workout|
+        %tr.workout_table_trainingrow
+          %td.workout_table_trainingrow_training= workout.menu
+          %td.workout_table_trainingrow_training= workout.mets
+          %td.workout_table_trainingrow_training= workout.time
+          %td.workout_table_trainingrow_training= workout.cal
+          %td.workout_table_trainingrow_icon= link_to '⚙', edit_workout_path(workout), class: "icon_edit"
+          %td.workout_table_trainingrow_icon= link_to '🗑', workout, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon_delete"
+      %tr.workout_table_totalrow
+        %td.workout_table_totalrow_total Total
+        %td.workout_table_totalrow_total
+        %td.workout_table_totalrow_total
+        %td.workout_table_totalrow_total= @workout_cal
+        %td.workout_table_totalrow_total
 
 

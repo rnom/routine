@@ -1,0 +1,27 @@
+body {
+  position: relative;
+  .header {
+    background-color: #333333;
+    display: flex;
+    height: 48px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    .navigation_top {
+  
+    }
+    .navigation_box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 150px 0 150px;
+      width: calc(100% - 150px);
+      font-family: cursive;
+      font-size: 18px;
+      .navigation_item {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}

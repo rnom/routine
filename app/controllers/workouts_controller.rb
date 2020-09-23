@@ -9,7 +9,6 @@ class WorkoutsController < ApplicationController
   end
 
   def new
-    gon.bodyweight = current_user.bodyweight
     @workout = Workout.new
     @workout_data = Workout.find_by('menu LIKE(?)', "%#{params[:menu]}%")
     respond_to do |format|
@@ -50,7 +49,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout.destroy
     respond_to do |format|
-      format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
+      format.html { redirect_to meals_url, notice: 'Workout was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,11 +65,6 @@ class WorkoutsController < ApplicationController
     @n_day = @@n_day
     @workouts = Workout.where(created_at: @n_day.all_day)
     @allworkouts = Workout.all
-    # @sum_protein = @workouts.sum(:protein).round(1)
-    # @sum_fat = @workouts.sum(:fat).round(1)
-    # @sum_carb = @workouts.sum(:carb).round(1)
-    # @sum_cal = @workouts.sum(:cal).round(1)
-    # @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
   end
 
   def previous
@@ -84,11 +78,6 @@ class WorkoutsController < ApplicationController
     @n_day = @@n_day
     @workouts = Workout.where(created_at: @n_day.all_day)
     @allworkouts = Workout.all
-    # @sum_protein = @workouts.sum(:protein).round(1)
-    # @sum_fat = @workouts.sum(:fat).round(1)
-    # @sum_carb = @workouts.sum(:carb).round(1)
-    # @sum_cal = @workouts.sum(:cal).round(1)
-    # @chart = {"Protein" => @sum_protein, "Fat" => @sum_fat, "Carb" => @sum_carb}
   end
 
   private

@@ -21,7 +21,7 @@
   .field
     = f.label :pal
     %br/
-    = f.number_field :pal, step: '0.1', autofocus: true, autocomplete: "pal(physical activity level)"
+    = f.select :pal, [["Seated work with no option of moving around and little or no strenuous leisure activity: 1.5 APL", 1.5], ["Standing work (e.g. housework, shop assistant) : 1.8 PAL", 1.8], ["Strenuous work or highly active leisure : 2.0 PAL", 2.0]]
   .field
     = f.label :email
     %br/
