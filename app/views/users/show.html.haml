@@ -33,26 +33,40 @@
         %br
         %br
 
-    -# = form_with url: user_path do |f|
-    -#  %span Start_date
-    -#  = f.date_select :start_date
-    -#  %span End_date
-    -#  = f.date_select :end_date
-
   .chart_box
     .chart_box_cal
-      .chart_box_cal_data
+      .motivation_quote
+        .motivation_quote_box
+          =image_tag '/arnold1.jpg', class: 'person', size: '500x300'
+          .motivation_quote_box_text
+            " If you want to turn a vision into reality, you have to give 100% and never stop believing in your dream. "
+            %br - Arnold Schwarzenegger
       .chart_box_cal_chart
         = line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
     .chart_box_protein
       .chart_box_protein_chart
         = line_chart [{name: "Total Protein", data: @chart_protein},{name: "Target", data: @protein_target}], discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
-      .chart_box_protein_data
+      .motivation_quote
+        .motivation_quote_box
+          =image_tag '/arnold2.jpg', class: 'person', size: '500x300'
+          .motivation_quote_box_text
+            " What is the point of being on this Earth if you are going to be like everyone else. "
+            %br - Arnold Schwarzenegger
     .chart_box_fat
-      .chart_box_fat_data
+      .motivation_quote
+        .motivation_quote_box
+          =image_tag '/Rick Rigsby.jpg', class: 'person', size: '500x300'
+          .motivation_quote_box_text
+            " Just stand. You keep standing. No matter how rough the sea, you keep standing. No matter what, you don't give up."
+            %br - Rick Rigsby
       .chart_box_fat_chart
         = line_chart [{name: "Total Fat", data: @chart_fat},{name: "Target", data: @fat_target}], discrete: true, xtitle: "Date", ytitle: "Total Fat", label: "Daily Fat", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
     .chart_box_carb
       .chart_box_carb_chart
         = line_chart [{name: "Total Carb", data: @chart_carb},{name: "Target", data: @carb_target}], discrete: true, xtitle: "Date", ytitle: "Total Carb", label: "Daily Carb", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
-      .chart_box_carb_data
+      .motivation_quote
+        .motivation_quote_box
+          =image_tag '/dwayne johnson.jpeg', class: 'person', size: '500x300'
+          .motivation_quote_box_text
+            " Success isn't overnight. It's when everyday you get a little better than the day before. It all adds up "
+            %br - Dwayne Johnson

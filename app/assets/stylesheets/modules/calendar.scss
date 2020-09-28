@@ -1,9 +1,17 @@
 .calendar {
   padding-top: 20px;
-  tbody {
-    // background-color: white;
-    .daily_macro.is-show {
-      display: none;
+  .simple-calendar {
+    .calendar-heading {
+      display: flex;
+      justify-content: center;
+      text-decoration: none;
+      color: orange;
+      font-size: 30px;
+    }
+    tbody {
+      .daily_macro.is-show {
+        display: none;
+      }
     }
   }
 }
