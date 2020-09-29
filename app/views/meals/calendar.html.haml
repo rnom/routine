@@ -12,25 +12,27 @@
       - meals.each do |meal|
         - @sum_carb += meal.carb.to_i
       - if @sum_protein >= @target_protein && @sum_fat <= @target_fat && @sum_carb <= @target_carb
-        = image_tag '/チェックマーク3.jpg', class: 'checkmark', size: '163x73'
+        .checkmark
+          ✔️
         .daily_macro.is-show
-          %span □ P:
+          %span P: 
           = @sum_protein
           %br/
-          %span □ F:
+          %span F: 
           = @sum_fat
           %br/
-          %span □ C:
+          %span C: 
           = @sum_carb
       -elsif date <= Date.today 
-        = image_tag '/バツマーク.jpg', class: 'checkmark', size: '163x73'
+        .crossmark
+          ✖️
         .daily_macro.is-show
-          %span □ P:
+          %span P:
           = @sum_protein
           %br/
-          %span □ F:
+          %span F:
           = @sum_fat
           %br/
-          %span □ C:
+          %span C:
           = @sum_carb
       

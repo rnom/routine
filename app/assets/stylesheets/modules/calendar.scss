@@ -1,16 +1,97 @@
 .calendar {
-  padding-top: 20px;
+  padding-top: 40px;
   .simple-calendar {
     .calendar-heading {
       display: flex;
       justify-content: center;
+      align-items: center;
       text-decoration: none;
       color: orange;
       font-size: 30px;
+      margin-bottom: 40px;
+      a {
+        text-decoration: none;
+        margin: 0 40px 0 40px;
+        font-size: 25px;
+        color: orange;
+      }
     }
     tbody {
       .daily_macro.is-show {
         display: none;
+        display: flex;
+        justify-content: center;
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+    .table-striped {
+      thead {
+
+      }
+      tbody {
+        tr {
+          .past.prev-month {
+            background-color: #333333;
+            .crossmark {
+              font-size: 60px;
+              text-align: center;
+            }
+            .checkmark {
+              font-size: 60px;
+              text-align: center;
+            }
+          }
+          .past.current-month {
+            .crossmark {
+              font-size: 60px;
+              text-align: center;
+            }
+            .checkmark {
+              font-size: 60px;
+              text-align: center;
+            }
+          }
+          .past.next-month {
+            background-color: #333333;
+            .crossmark {
+              font-size: 60px;
+              text-align: center;
+            }
+            .checkmark {
+              font-size: 60px;
+              text-align: center;
+            }
+          }
+          .start-date {
+            .crossmark {
+              font-size: 60px;
+              text-align: center;
+            }
+            .checkmark {
+              font-size: 60px;
+              text-align: center;
+            }
+          }
+          .today.prev-month {
+            background-color: #333333;
+            .crossmark {
+              font-size: 60px;
+              text-align: center;
+            }
+            .checkmark {
+              font-size: 60px;
+              text-align: center;
+            }
+          }
+          .future.prev-month {
+            background-color: #333333;
+          }
+          .future.next-month {
+            background-color: #333333;
+          }
+        }
       }
     }
   }
