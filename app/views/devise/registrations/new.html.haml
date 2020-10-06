@@ -1,41 +1,53 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
-  .field
-    = f.label :bodyweight
-    %br/
-    = f.number_field :bodyweight,autofocus: true, autocomplete: "bodyweight(kg)"
-  .field
-    = f.label :height
-    %br/
-    = f.number_field :height, autofocus: true, autocomplete: "height(cm)"
-  .field
-    = f.label :age
-    %br/
-    = f.number_field :age, autofocus: true, autocomplete: "age"
-  .field
-    = f.label :pal
-    %br/
-    = f.number_field :pal, step: '0.1', autofocus: true, autocomplete: "pal(physical activity level)"
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.main_body
+  .account_box_signup
+    .signup_text
+      Sign up
+    .signup_account_data
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :nickname
+          .signup_account_data_area_form
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :bodyweight
+          .signup_account_data_area_form
+            = f.number_field :bodyweight, step: '0.1',autofocus: true, autocomplete: "bodyweight(kg)"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :height
+          .signup_account_data_area_form
+            = f.number_field :height, autofocus: true, autocomplete: "height(cm)"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :age
+          .signup_account_data_area_form
+            = f.number_field :age, autofocus: true, autocomplete: "age"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :pal
+          .signup_account_data_area_form
+            = f.select :pal, [["Seated work with no option of moving around and little or no strenuous leisure activity: 1.5 APL", 1.5], ["Standing work (e.g. housework, shop assistant) : 1.8 PAL", 1.8], ["Strenuous work or highly active leisure : 2.0 PAL", 2.0]]
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :email
+          .signup_account_data_area_form
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+          .signup_account_data_area_form
+            = f.password_field :password, autocomplete: "new-password"
+        .signup_account_data_area
+          .signup_account_data_area_title
+            = f.label :password_confirmation
+          .signup_account_data_area_form
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+        .signup_button
+          = f.submit "Sign up"
+      = render "devise/shared/links"

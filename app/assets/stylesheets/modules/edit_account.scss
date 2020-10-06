@@ -1,0 +1,87 @@
+// edit account page
+.account_box {
+  height: 100%;
+  margin-left: 50px;
+  .edit_text {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .edit_account_data {
+    &_area {
+      font-size: 20px;
+      margin-bottom: 10px;
+      &_title {
+
+      }
+      &_form {
+
+      }
+    }
+    .update_button {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// sign-in page
+.account_box_signin {
+  padding-top: 40px;
+  margin-left: 50px;
+  padding-bottom: 25%;
+  .signin_text {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .signin_account_data {
+    &_area {
+      font-size: 20px;
+      margin-bottom: 10px;
+      &_title {
+
+      }
+      &_form {
+
+      }
+    }
+    .login_box {
+      display: flex;
+      margin-bottom: 10px;
+      .remember_button {
+        margin-right: 46px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: orange;
+    }
+  }
+}
+
+// sign-up page
+.account_box_signup {
+  padding-top: 40px;
+  margin-left: 50px;
+  .signup_text {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .signup_account_data {
+    &_area {
+      font-size: 20px;
+      margin-bottom: 10px;
+      &_title {
+
+      }
+      &_form {
+
+      }
+    }
+    .signup_button {
+      margin-bottom: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: orange;
+    }
+  }
+}

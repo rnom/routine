@@ -20,7 +20,7 @@
           = link_to 'Edit Account', edit_user_registration_path(current_user), class: "navigation_item"
           = link_to "Log-out", destroy_user_session_path, method: :delete, class: "navigation_item"
       - else
-        .grid-6
-          = link_to "Log-in", new_user_session_path, class: 'navigation_item'
-          = link_to "Sign-up", new_user_registration_path, class: 'navigation_item'
+        -# .grid-6
+        -#   = link_to "Log-in", new_user_session_path, class: 'navigation_item'
+        -#   = link_to "Sign-up", new_user_registration_path, class: 'navigation_item'
     = yield

@@ -153,7 +153,8 @@ class MealsController < ApplicationController
   end
 
   def calendar
-    @allmeals = Meal.all
+    # @allmeals = Meal.all
+    @allmeals = Meal.where(user_id: current_user.id)
     @target_fat = (current_user.tdee*0.25/9).floor(1)
     @target_protein = current_user.bodyweight*2
     @target_carb = (current_user.tdee-(@target_fat*9+@target_protein*4))/4.floor(1)

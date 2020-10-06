@@ -10,7 +10,7 @@
           %br
           ="□ Weight:                               #{current_user.bodyweight}kg"
           %br
-          ="□ Age:                                  #{current_user.age}year's old"
+          ="□ Age:                                  #{current_user.age} year's old"
         .personal_data_figures
           %br
           ="□ BMR(Basal Metabolic Rate):            #{current_user.bmr}kcal"
@@ -24,7 +24,8 @@
       .PFCgraph
         = pie_chart @chart, suffix: "", title: "Target PFC Balance", colors: ["#FF6600", "#F00", "#444444"]
       .PFC_target_data
-        %h3 Target: 
+        %h3 Your daily target
+        %br
         ="□ Protein: #{@target_protein}g"
         %br
         ="□ Fat: #{@target_fat}g" 
