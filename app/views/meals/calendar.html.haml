@@ -4,35 +4,36 @@
       = date.day
       - @sum_protein = 0
       - meals.each do |meal|
-        - @sum_protein += meal.protein.to_i
+        - @sum_protein += meal.protein
       - @sum_fat = 0
       - meals.each do |meal|
-        - @sum_fat += meal.fat.to_i
+        - @sum_fat += meal.fat
       - @sum_carb = 0
       - meals.each do |meal|
-        - @sum_carb += meal.carb.to_i
+        - @sum_carb += meal.carb
       - if @sum_protein >= @target_protein && @sum_fat <= @target_fat && @sum_carb <= @target_carb
         .checkmark
           ✔️
         .daily_macro.is-show
           %span P: 
-          = @sum_protein
+          = @sum_protein.round(2)
           %br/
           %span F: 
-          = @sum_fat
+          = @sum_fat.round(2)
           %br/
           %span C: 
-          = @sum_carb
+          = @sum_carb.round(2)
       -elsif date <= Date.today 
         .crossmark
           ✖️
         .daily_macro.is-show
           %span P:
-          = @sum_protein
+          = @sum_protein.round(2)
           %br/
           %span F:
-          = @sum_fat
+          = @sum_fat.round(2)
           %br/
           %span C:
-          = @sum_carb
+          = @sum_carb.round(2)
+        
       

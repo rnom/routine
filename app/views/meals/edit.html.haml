@@ -1,5 +1,49 @@
-%h1 Editing Meal
-= render 'form', meal: @meal
-= link_to 'Show', @meal
-|
-= link_to 'Back', meals_path
+.main_body
+  .edit_meal_box
+    .edit_meal_text
+      Editing Meal
+    .meals_update_box
+      = form_with(model: @meal, remote: true) do |form|
+        - if @meal.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@meal.errors.count, "error")
+              prohibited this @meal from being saved:
+            %ul
+              - @meal.errors.full_messages.each do |message|
+                %li= message
+        .meals_update_box_area
+          .meals_update_box_area_label
+            = form.label :name
+          .meals_update_box_area_field
+            = form.text_field :name
+        .meals_update_box_area
+          .meals_update_box_area_label
+            = form.label :protein
+          .meals_update_box_area_field
+            = form.number_field :protein, step: '0.01'
+        .meals_update_box_area
+          .meals_update_box_area_label
+            = form.label :fat
+          .meals_update_box_area_field
+            = form.number_field :fat, step: '0.01'
+        .meals_update_box_area
+          .meals_update_box_area_label
+            = form.label :carb
+          .meals_update_box_area_field
+            = form.number_field :carb, step: '0.01'
+        .meals_update_box_area
+          .meals_update_box_area_label
+            = form.label :cal
+          .meals_update_box_area_field
+            = form.number_field :cal, step: '0.01'
+        .submit_button
+          = form.submit
+
+
+-# .main_body
+-#   %h1 Editing Meal
+-#   = render 'form', meal: @meal
+-#   -# = link_to 'Show', @meal
+-#   -# |
+-#   -# = link_to 'Back', meals_path

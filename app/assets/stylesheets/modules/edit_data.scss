@@ -1,10 +1,10 @@
 // edit account page
 .account_box {
-  height: 100%;
   margin-left: 50px;
   .edit_text {
     font-size: 30px;
     margin-bottom: 20px;
+    padding-top: 20px;
   }
   .edit_account_data {
     &_area {
@@ -18,7 +18,7 @@
       }
     }
     .update_button {
-      margin-bottom: 10px;
+      padding-top: 10px;
     }
   }
 }
@@ -82,6 +82,58 @@
     a {
       text-decoration: none;
       color: orange;
+    }
+  }
+}
+
+// edit_meal page
+.edit_meal_box {
+  padding-top: 40px;
+  margin-left: 50px;
+  padding-bottom: 7%;
+  .edit_meal_text {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .meals_update_box {
+    &_area {
+      font-size: 20px;
+      margin-bottom: 10px;
+      &_label {
+  
+      }
+      &_field {
+  
+      }
+    }
+    .submit_button {
+      padding-top: 10px;
+    }
+  }
+}
+
+// edit_workout page
+.edit_workout_box {
+  padding-top: 40px;
+  margin-left: 50px;
+  padding-bottom: 12%;
+  .edit_workout_text {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .workouts_update_box {
+    &_area {
+      font-size: 20px;
+      margin-bottom: 10px;
+      &_label {
+  
+      }
+      &_field {
+  
+      }
+    }
+    .submit_button {
+      padding-top: 10px;
     }
   }
 }

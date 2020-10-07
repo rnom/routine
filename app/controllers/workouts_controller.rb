@@ -37,7 +37,7 @@ class WorkoutsController < ApplicationController
   def update
     respond_to do |format|
       if @workout.update(workout_params)
-        format.html { redirect_to @workout }
+        format.html { redirect_to meals_path }
         format.json { render :show, status: :ok, location: @workout }
       else
         format.html { render :edit }
@@ -54,31 +54,31 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def next
-    @workout = Workout.new
-    @workout_data = Workout.find_by('name LIKE(?)', "%#{params[:name]}%")
-    respond_to do |format|
-      format.html
-      format.json
-    end
-    @@n_day = @@n_day+1
-    @n_day = @@n_day
-    @workouts = Workout.where(created_at: @n_day.all_day)
-    @allworkouts = Workout.all
-  end
+  # def next
+  #   @workout = Workout.new
+  #   @workout_data = Workout.find_by('name LIKE(?)', "%#{params[:name]}%")
+  #   respond_to do |format|
+  #     format.html
+  #     format.json
+  #   end
+  #   @@n_day = @@n_day+1
+  #   @n_day = @@n_day
+  #   @workouts = Workout.where(created_at: @n_day.all_day)
+  #   @allworkouts = Workout.all
+  # end
 
-  def previous
-    @workout = Workout.new
-    @workout_data = Workout.find_by('name LIKE(?)', "%#{params[:name]}%")
-    respond_to do |format|
-      format.html
-      format.json
-    end
-    @@n_day = @@n_day-1
-    @n_day = @@n_day
-    @workouts = Workout.where(created_at: @n_day.all_day)
-    @allworkouts = Workout.all
-  end
+  # def previous
+  #   @workout = Workout.new
+  #   @workout_data = Workout.find_by('name LIKE(?)', "%#{params[:name]}%")
+  #   respond_to do |format|
+  #     format.html
+  #     format.json
+  #   end
+  #   @@n_day = @@n_day-1
+  #   @n_day = @@n_day
+  #   @workouts = Workout.where(created_at: @n_day.all_day)
+  #   @allworkouts = Workout.all
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,7 +1,36 @@
-%h1 Editing workout
-
-= render 'form'
-
-= link_to 'Show', @workout
-\|
-= link_to 'Back', workouts_path
+.main_body
+  .edit_workout_box
+    .edit_workout_text
+      Editing workout
+    .workouts_update_box
+      = form_with(model: @workout, remote: true) do |form|
+        - if @workout.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@workout.errors.count, "error")
+              prohibited this @workout from being saved:
+            %ul
+              - @workout.errors.full_messages.each do |message|
+                %li= message
+        .workouts_update_box_area
+          .workouts_update_box_area_label
+            = form.label :menu
+          .workouts_update_box_area_field
+            = form.text_field :menu
+        .workouts_update_box_area
+          .workouts_update_box_area_label
+            = form.label :mets
+          .workouts_update_box_area_field
+            = form.number_field :mets, step: '0.01'
+        .workouts_update_box_area
+          .workouts_update_box_area_label
+            = form.label :time
+          .workouts_update_box_area_field
+            = form.number_field :time, step: '0.01'
+        .workouts_update_box_area
+          .workouts_update_box_area_label
+            = form.label :cal
+          .workouts_update_box_area_field
+            = form.number_field :cal, step: '0.01'
+        .submit_button
+          = form.submit

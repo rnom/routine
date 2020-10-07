@@ -8,8 +8,6 @@ $(function() {
       dataType: 'json'
     })
     .done(function(workout_data) {
-      // mets = workout_data.mets;
-      // $("#workout_mets").val(mets);
       time = workout_data.time;
       $("#workout_time").val(time);
       cal = workout_data.cal;

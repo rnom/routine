@@ -22,7 +22,7 @@ $(function() {
 });
 
 $(function() {
-  $('.day').click(function() {
+  $('.table-striped').click(function() {
     $('.is-show').toggle();
   })
 });
