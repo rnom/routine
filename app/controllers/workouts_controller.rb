@@ -18,6 +18,7 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    gon.bodyweight = current_user.bodyweight
   end
 
   def create

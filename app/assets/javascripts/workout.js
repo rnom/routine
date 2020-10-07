@@ -17,17 +17,25 @@ $(function() {
   });
 });
 
-function update_cal(){
+function auto_cal(){
   var selected_mets = document.getElementById("workout_mets");
   var mets = selected_mets.value;
   var cal = mets * $('#workout_time').val() * 1.05 * gon.bodyweight;
-  $('#workout_cal').val(cal);
+  var cal_round = Math.round(cal)
+  $('#workout_cal').val(cal_round);
 }
 $(function() {
   $('.workout_table_formrow').on('keyup change', function() {
-    update_cal();
+    auto_cal();
   });
 });
+$(function() {
+  $('.workouts_update_box').on('keyup change', function() {
+    auto_cal();
+  });
+});
+
+
 
 
 

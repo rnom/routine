@@ -21,7 +21,7 @@
           .workouts_update_box_area_label
             = form.label :mets
           .workouts_update_box_area_field
-            = form.number_field :mets, step: '0.01'
+            = form.select :mets, [["High level: 8.0 METs", 8.0], ["Low level : 3.8 METs", 3.8]],class: "mets"
         .workouts_update_box_area
           .workouts_update_box_area_label
             = form.label :time
