@@ -12,12 +12,12 @@
             = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
         .edit_account_data_area
           .edit_account_data_area_title
-            = f.label :bodyweight
+            = f.label :bodyweight, "Bodyweight (kg)"
           .edit_account_data_area_form
             = f.number_field :bodyweight, step: '0.1',autofocus: true, autocomplete: "bodyweight(kg)"
         .edit_account_data_area
           .edit_account_data_area_title
-            = f.label :height
+            = f.label :height, "Height (cm)"
           .edit_account_data_area_form
             = f.number_field :height, autofocus: true, autocomplete: "height(cm)"
         .edit_account_data_area

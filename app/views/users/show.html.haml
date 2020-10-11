@@ -13,12 +13,40 @@
           ="□ Age:                                  #{current_user.age} year's old"
         .personal_data_figures
           %br
-          ="□ BMR(Basal Metabolic Rate):            #{current_user.bmr}kcal"
-          %br
-          ="□ TDEE(Total Daily Energy Expenditure): #{current_user.tdee}kcal"
-          %br
-          ="□ PAL(Physical Activity Level):         #{current_user.pal}"
-          %br
+          .personal_data_figures_bmr
+            %i.fas.fa-question-circle{ style: "color:gray;" }
+            ="BMR(Basal Metabolic Rate):            #{current_user.bmr}kcal"
+            .bmr_help_text.is-show
+              BMR: Basal Metablic Rate
+              %br Your BMR is the amount of energy you expend each day when you do nothing but rest for 24 hours.
+              It’s useful to calculate your BMR so that you can work out how many calories your body requires to remain functioning.
+              Below formulas are for your BMR calculation:
+              %br Men: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
+              Women: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
+
+          .personal_data_figures_pal
+            %i.fas.fa-question-circle{ style: "color:gray;" }
+            ="PAL(Physical Activity Level):         #{current_user.pal}"
+            .pal_help_text.is-show
+              PAL: Physical Activity Level
+              %br PAL = 1.5 (Sedentary or light activity lifestyle): 
+              People who have jobs that don’t demand much physical effort, don’t walk long distances, use motor vehicles as transport, don’t exercise or play sports regularly, spend most of the time sitting/standing without moving much.
+              %br
+              %br PAL = 1.8 (Active or moderately active lifestyle):
+              People who have jobs that aren’t too strenuous but involve more movement than sedentary jobs, for example, construction workers or people who perform agricultural chores. Conversely, this could be people who have sedentary jobs but participate in vigorous exercise or sports for around one hour per day (either continuously or intermittent bouts).
+              %br
+              %br PAL = 2.2 (Vigorous or vigorously active lifestyle):
+              People that regularly engage in strenuous work or physical activity that lasts several hours, for example, swimmers that swim for more than two hours a day, those that work in the armed forces, or agricultural workers that do the majority of their work without machines (walking long distances, carrying heavy loads).
+
+          .personal_data_figures_tdee
+            %i.fas.fa-question-circle{ style: "color:gray;" }
+            ="TDEE(Total Daily Energy Expenditure): #{current_user.tdee}kcal"
+            .tdee_help_text.is-show
+              TDEE: Total Daily Energy Expenditure
+              %br You cau use this to work out how mamy calories your body uses per day, including your daily activities and exercise.
+              To calculate your TDEE, you need to look at the activities you do throughout the day and that is PAL(Physical Activity Level).
+              %br The below formulas are for your TDEE calculation:
+              Your TDEE = your BML x your PAL
 
     .PFC_box
       .PFCgraph

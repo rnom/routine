@@ -12,7 +12,43 @@
         margin-right: 60px;
       }
       &_figures {
-
+        position: relative;
+        &_bmr {
+          .bmr_help_text.is-show {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 550px;
+            width: 630px;
+            color: orange;
+            background-color: #444444;
+            padding: 10px;
+          }
+        }
+        &_tdee {
+          .tdee_help_text.is-show {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 550px;
+            width: 630px;
+            color: orange;
+            background-color: #444444;
+            padding: 10px;
+          }
+        }
+        &_pal {
+          .pal_help_text.is-show {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 550px;
+            width: 630px;
+            color: orange;
+            background-color: #444444;
+            padding: 10px;
+          }
+        }
       }
     }
   }

@@ -19,10 +19,12 @@
     tbody {
       .daily_macro.is-show {
         display: none;
-        display: flex;
-        justify-content: center;
-        span {
-          margin-left: 5px;
+        .PFC_data_box {
+          display: flex;
+          justify-content: center;
+          span {
+            margin-left: 5px;
+          }
         }
       }
     }

@@ -57,9 +57,11 @@
         border-color: gray;
         input[type="text"] {
           width: 200px;
+          text-align: center;
         }
         input[type="number"] {
           width: 70px;
+          text-align: center;
         }
         input[type="submit"] {
           width: 70px;
@@ -135,11 +137,13 @@
           border: 1px solid;
           border-color: gray;
           width: 200px;
+          text-align: center;
         }
         input[type="number"] {
           border: 1px solid;
           border-color: gray;
           width: 70px;
+          text-align: center;
         }
         input[type="submit"] {
           border: 1px solid;
