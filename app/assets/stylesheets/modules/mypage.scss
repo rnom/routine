@@ -17,8 +17,8 @@
           .bmr_help_text.is-show {
             display: none;
             position: absolute;
-            top: 20px;
-            left: 550px;
+            top: -10px;
+            left: 500px;
             width: 630px;
             color: orange;
             background-color: #444444;
@@ -29,8 +29,8 @@
           .tdee_help_text.is-show {
             display: none;
             position: absolute;
-            top: 20px;
-            left: 550px;
+            top: -10px;
+            left: 500px;
             width: 630px;
             color: orange;
             background-color: #444444;
@@ -41,12 +41,13 @@
           .pal_help_text.is-show {
             display: none;
             position: absolute;
-            top: 20px;
-            left: 550px;
+            top: -10px;
+            left: 500px;
             width: 630px;
             color: orange;
             background-color: #444444;
             padding: 10px;
+            z-index: 10;
           }
         }
       }
@@ -58,9 +59,49 @@
     align-items: center;
     margin-left: 27%;
     .PFC_target_data {
-    margin-left: 8%;
-    font-size: 30px;
-    margin-top: 8%;
+      margin-left: 8%;
+      font-size: 25px;
+      margin-top: 8%;
+      position: relative;
+      &_protein {
+        .protein_help_text.is-show {
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 250px;
+          width: 350px;
+          color: orange;
+          background-color: #444444;
+          padding: 10px;
+          font-size: 20px;
+        }
+      }
+      &_fat {
+        .fat_help_text.is-show {
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 250px;
+          width: 350px;
+          color: orange;
+          background-color: #444444;
+          padding: 10px;
+          font-size: 20px;
+        }
+      }
+      &_carb {
+        .carb_help_text.is-show {
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 250px;
+          width: 350px;
+          color: orange;
+          background-color: #444444;
+          padding: 10px;
+          font-size: 20px;
+        }
+      }
     }
   }
 }

@@ -69,8 +69,18 @@
     &_area {
       font-size: 20px;
       margin-bottom: 10px;
-      &_title {
-
+      &_title_pal {
+        position: relative;
+        .pal_help_text.is-show {
+          display: none;
+          position: absolute;
+          top: -250px;
+          left: 700px;
+          width: 630px;
+          color: orange;
+          background-color: #444444;
+          padding: 10px;
+        }
       }
       &_form {
 

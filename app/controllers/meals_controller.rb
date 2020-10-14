@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
   
   def index
+    flash.discard(:notice)
     @meal = Meal.new
     @meal_data = Meal.find_by('name LIKE(?)', "%#{params[:name]}%")
     respond_to do |format|

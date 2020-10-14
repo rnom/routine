@@ -26,10 +26,22 @@
           .signup_account_data_area_form
             = f.number_field :age, autofocus: true, autocomplete: "age"
         .signup_account_data_area
-          .signup_account_data_area_title
+          .signup_account_data_area_title_pal
+            %i.fas.fa-question-circle{ style: "color:gray;" }
             = f.label :pal
+            .pal_help_text.is-show
+              PAL: Physical Activity Level
+              %br PAL = 1.5 (Sedentary or light activity lifestyle): 
+              People who have jobs that don’t demand much physical effort, don’t walk long distances, use motor vehicles as transport, don’t exercise or play sports regularly, spend most of the time sitting/standing without moving much.
+              %br
+              %br PAL = 1.8 (Active or moderately active lifestyle):
+              People who have jobs that aren’t too strenuous but involve more movement than sedentary jobs, for example, construction workers or people who perform agricultural chores. Conversely, this could be people who have sedentary jobs but participate in vigorous exercise or sports for around one hour per day (either continuously or intermittent bouts).
+              %br
+              %br PAL = 2.2 (Vigorous or vigorously active lifestyle):
+              People that regularly engage in strenuous work or physical activity that lasts several hours, for example, swimmers that swim for more than two hours a day, those that work in the armed forces, or agricultural workers that do the majority of their work without machines (walking long distances, carrying heavy loads).
+              
           .signup_account_data_area_form
-            = f.select :pal, [["Seated work with no option of moving around and little or no strenuous leisure activity: 1.5 APL", 1.5], ["Standing work (e.g. housework, shop assistant) : 1.8 PAL", 1.8], ["Strenuous work or highly active leisure : 2.0 PAL", 2.0]]
+            = f.select :pal, [["Seated work with no option of moving around and little or no strenuous leisure activity: 1.5 APL", 1.5], ["Standing work (e.g. housework, shop assistant) : 1.8 PAL", 1.8], ["Strenuous work or highly active leisure : 2.2 PAL", 2.2]]
         .signup_account_data_area
           .signup_account_data_area_title
             = f.label :email

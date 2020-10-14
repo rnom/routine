@@ -20,7 +20,7 @@
               BMR: Basal Metablic Rate
               %br Your BMR is the amount of energy you expend each day when you do nothing but rest for 24 hours.
               It’s useful to calculate your BMR so that you can work out how many calories your body requires to remain functioning.
-              Below formulas are for your BMR calculation:
+              Below formulas are for your BMR calculation (The Mifflin, M. D., St Jeor formula):
               %br Men: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
               Women: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
 
@@ -37,6 +37,7 @@
               %br
               %br PAL = 2.2 (Vigorous or vigorously active lifestyle):
               People that regularly engage in strenuous work or physical activity that lasts several hours, for example, swimmers that swim for more than two hours a day, those that work in the armed forces, or agricultural workers that do the majority of their work without machines (walking long distances, carrying heavy loads).
+              %br Source: FAO (2004)2
 
           .personal_data_figures_tdee
             %i.fas.fa-question-circle{ style: "color:gray;" }
@@ -46,19 +47,33 @@
               %br You cau use this to work out how mamy calories your body uses per day, including your daily activities and exercise.
               To calculate your TDEE, you need to look at the activities you do throughout the day and that is PAL(Physical Activity Level).
               %br The below formulas are for your TDEE calculation:
-              Your TDEE = your BML x your PAL
+              Your TDEE = your BMR x your PAL
 
     .PFC_box
       .PFCgraph
         = pie_chart @chart, suffix: "", title: "Target PFC Balance", colors: ["#FF6600", "#F00", "#444444"]
       .PFC_target_data
-        %h3 Your daily target
+        %h3 Your PFC target to maintain your body
         %br
-        ="□ Protein: #{@target_protein}g"
-        %br
-        ="□ Fat: #{@target_fat}g" 
-        %br
-        ="□ Carb: #{@target_carb}g"
+        .PFC_target_data_protein
+          %i.fas.fa-question-circle{ style: "color:gray;" }
+          ="Protein: #{@target_protein}g"
+          .protein_help_text.is-show
+            Your protein target is calculated by below forumula
+            %br Your protein target = your bodyweight x 2
+        .PFC_target_data_fat
+          %i.fas.fa-question-circle{ style: "color:gray;" }
+          ="Fat: #{@target_fat}g"
+          .fat_help_text.is-show 
+            Your fat target is calculated by below forumula
+            %br Your fat target = your TDEE x 0.25 / 9
+        .PFC_target_data_carb
+          %i.fas.fa-question-circle{ style: "color:gray;" }
+          ="Carb: #{@target_carb}g"
+          .carb_help_text.is-show
+            Your carb target is calculated by below forumula
+            %br Your carb target = 
+            { Your TDEE - ( your fat target x 9 + your protein target x 4 ) } / 4
         %br
         %br
 

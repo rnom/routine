@@ -15,12 +15,8 @@
           =image_tag '/logo.jpg', class: 'logo', size: '150x48'
       - if user_signed_in?
         .navigation_box
-          = link_to "My page", user_path(current_user), class: "navigation_item"
+          = link_to "My page", user_path(current_user), class: "navigation_item", data: {"turbolinks" => false}
           = link_to 'Calendar', calendar_meals_path, data: {"turbolinks" => false}, class: "navigation_item"
           = link_to 'Edit Account', edit_user_registration_path(current_user), class: "navigation_item"
           = link_to "Log-out", destroy_user_session_path, method: :delete, class: "navigation_item"
-      - else
-        -# .grid-6
-        -#   = link_to "Log-in", new_user_session_path, class: 'navigation_item'
-        -#   = link_to "Sign-up", new_user_registration_path, class: 'navigation_item'
     = yield
