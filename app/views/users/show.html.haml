@@ -78,15 +78,6 @@
         %br
 
   .chart_box
-    .chart_box_cal
-      .motivation_quote
-        .motivation_quote_box
-          =image_tag '/arnold1.jpg', class: 'person', size: '500x300'
-          .motivation_quote_box_text
-            " If you want to turn a vision into reality, you have to give 100% and never stop believing in your dream. "
-            %br - Arnold Schwarzenegger
-      .chart_box_cal_chart
-        = line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
     .chart_box_protein
       .chart_box_protein_chart
         = line_chart [{name: "Total Protein", data: @chart_protein},{name: "Target", data: @protein_target}], discrete: true, xtitle: "Date", ytitle: "Total Protein", label: "Daily Protein", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
@@ -114,3 +105,12 @@
           .motivation_quote_box_text
             " Success isn't overnight. It's when everyday you get a little better than the day before. It all adds up "
             %br - Dwayne Johnson
+    .chart_box_cal
+      .motivation_quote
+        .motivation_quote_box
+          =image_tag '/arnold1.jpg', class: 'person', size: '500x300'
+          .motivation_quote_box_text
+            " If you want to turn a vision into reality, you have to give 100% and never stop believing in your dream. "
+            %br - Arnold Schwarzenegger
+      .chart_box_cal_chart
+        = line_chart [{name: "Total Cal", data: @chart_cal},{name: "Target", data: @cal_target}], discrete: true, xtitle: "Date", ytitle: "Total Cal", label: "Daily Cal", colors: ["#FF6600", "#444444"], width: "800px", height: "400px"
