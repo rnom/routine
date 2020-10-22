@@ -10,10 +10,10 @@
     justify-content: space-between;
     padding-top: 40px;
     margin: 0  200px 0 200px;
+    font-size: 30px;
     .date {
       text-decoration: none;
       color: orange;
-      font-size: 30px;
     }
   }
   .PFC_databox {
@@ -198,3 +198,206 @@
     }
   }
 }
+
+
+// .main_body {
+//   background-image: url("darkconcrete.jpg");
+//   background-size: cover;
+//   color: orange;
+//   height: auto;
+//   padding-top: 6.5vh;
+//   padding-bottom: 10%;
+//   .date_box {
+//     display: flex;
+//     justify-content: space-between;
+//     padding-top: 6vh;
+//     margin: 0  15% 0 15%;
+//     font-size: 180%;
+//     .date {
+//       text-decoration: none;
+//       color: orange;
+//     }
+//   }
+//   .PFC_databox {
+//     padding-top: 6.5vh;
+//     display: flex;
+//     align-items: center;
+//     margin-left: 27%;
+//     .PFC_remaining_data {
+//       margin-left: 8%;
+//       font-size: 180%;
+//       padding-top: 8%;
+//     }
+//   }
+//   .table_box {
+//     padding-top: 10vh;
+//     margin: 0  4% 0 4%;
+//     display: flex;
+//     justify-content: center;
+//     font-size: 125%;
+//     .meal_table {
+//       border: 1px solid;
+//       border-color: gray;
+//       margin-right: 5%;
+//       text-align: center;
+//       &_titlerow {
+//         border: 1px solid;
+//         border-color: gray;
+//         &_title-long {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 18vw;
+//         }
+//         &_title {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 5vw;
+//         }
+//       }
+//       &_formrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         input[type="text"] {
+//           width: 18vw;
+//           text-align: center;
+//         }
+//         input[type="number"] {
+//           width: 5vw;
+//           text-align: center;
+//         }
+//         input[type="submit"] {
+//           width: 5vw;
+//         }
+//       }
+//       &_itemrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         &_item_name {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 18vw;
+//         }
+//         &_item {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 5vw;
+//         }
+//         &_icon {
+//           border: 1px solid;
+//           border-color: gray;
+//           position: relative;
+//           .icon_edit {
+//             text-decoration: none;
+//             color: gray;
+//             font-size: 170%;
+//             position: absolute;
+//             top: -25%;
+//             left: 12%;
+//           }
+//           .icon_delete {
+//             text-decoration: none;
+//             font-size: 110%;
+//             position: absolute;
+//             top: 0px;
+//             left: -30px;
+//           }
+//         }
+//       }
+//       &_totalrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         &_total {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//           font-weight: bold;
+//         }
+//       }
+//     }
+//     .workout_table {
+//       border: 1px solid;
+//       border-color: gray;
+//       text-align: center;
+//       &_titlerow {
+//         border: 1px solid;
+//         border-color: gray;
+//         &_title-long {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 200px;
+//         }
+//         &_title {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//         }
+//       }
+//       &_formrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         input[type="text"] {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 200px;
+//           text-align: center;
+//         }
+//         input[type="number"] {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//           text-align: center;
+//         }
+//         input[type="submit"] {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//         }
+//       }
+//       &_trainingrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         height: 30px;
+//         &_training_menu {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 200px;
+//         }
+//         &_training {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//         }
+//         &_icon {
+//           border: 1px solid;
+//           border-color: gray;
+//           position: relative;
+//           .icon_edit {
+//             text-decoration: none;
+//             color: gray;
+//             font-size: 30px;
+//             position: absolute;
+//             top: -5px;
+//             left: 10px;
+//           }
+//           .icon_delete {
+//             text-decoration: none;
+//             font-size: 20px;
+//             position: absolute;
+//             top: 0px;
+//             left: -30px;
+//           }
+//         }
+//       }
+//       &_totalrow {
+//         border: 1px solid;
+//         border-color: gray;
+//         &_total {
+//           border: 1px solid;
+//           border-color: gray;
+//           width: 70px;
+//         }
+//       }
+//     }
+//   }
+// }
+
